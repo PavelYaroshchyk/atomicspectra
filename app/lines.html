@@ -5,7 +5,11 @@
 	</head>
 	<body>
 		<div id='lines'>
-			
+		</div>
+		<div ng-controller='LinesController'>
+			<button class='btn btn-default' ng-click='testData.testClick(item, $event)'>go</button>
+			<br/>
+			data from server: {{testData.result}}
 		</div>
 	</body>
 </html>
