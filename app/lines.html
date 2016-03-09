@@ -7,9 +7,30 @@
 		<div id='lines'>
 		</div>
 		<div ng-controller='LinesController'>
-			<button class='btn btn-default' ng-click='testData.testClick(item, $event)'>go</button>
-			<br/>
-			data from server: {{testData.result}}
+			
+			<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" ng-click='linesData.selectAl()'>Al</button>
+			<br>
+			<button class='btn btn-default' ng-click='linesData.fetchLines(item, $event)'>go</button>
+			<!--data from server: {{linesData.result}} -->
+
+			<table id='lines-table' class='table table-striped'>
+				<thead>
+					<tr>
+						<td>Element</td>
+						<td>Ion.</td>
+						<td>Wavelength/nm</td>
+						<td>Relative Intensity</td>
+					</tr>
+				</thead>
+				<tbody>
+  					<tr ng-repeat="line in linesData.result">
+  						<td>{{line.elName}}</td>
+  						<td>{{line.ion}}</td>
+    					<td>{{line.wl}}</td>
+	    				<td>{{line.relInt}}</td>
+	  				</tr>
+	  			</tbody>
+			</table>
 		</div>
 	</body>
 </html>

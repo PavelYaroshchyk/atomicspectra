@@ -1,17 +1,21 @@
 angular.module('spectralPlotter')
 	.controller('LinesController',['$scope', '$http', function($scope, $http){
-		//--junk 
-		$scope.testData = {};
-		$scope.testData.testClick = function(item, event){
-			var testUrl = 'http://localhost:8080/atomicspectroscopy/api/data/lines/H/I';
-			var testResponse = $http.get(testUrl);	
-			testResponse.success(function(data, status, headers, config){
-				$scope.testData.result = data;
-				console.log(data);
+	
+		$scope.linesData = {};
+		$scope.linesData.element = '';
+		$scope.linesData.selectAl = function(){
+			$scope.linesData.element = 'Al';
+		}
+
+		$scope.linesData.fetchLines = function(item, event){
+			var serviceUrl = 'http://localhost:8080/atomicspectroscopy/api/data/lines/';
+			var dataUrl = serviceUrl + $scope.linesData.element + '/I';
+			var linesResponse = $http.get(dataUrl);
+			linesResponse.success(function(data, status, headers, config){
+				$scope.linesData.result = data;
 			});
-			testResponse.error(function(data, status, headers, config){
-				alert('failed call');
+			linesResponse.error(function(data, status, headers, config){
+				console.log('failed get lines request' + status);
 			});
 		}
-		//-junk
 	}]);
