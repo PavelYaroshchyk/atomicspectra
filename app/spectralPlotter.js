@@ -1,4 +1,4 @@
-var spectralPlotter = angular.module('spectralPlotter', ['ngRoute','ui.bootstrap']);
+var spectralPlotter = angular.module('spectralPlotter', ['ngRoute','ui.bootstrap','googlechart']);
 spectralPlotter.config(['$routeProvider', function($routeProvider){
 	$routeProvider
 	.when('/welcome',{

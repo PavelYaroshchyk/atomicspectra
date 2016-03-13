@@ -16,15 +16,12 @@ angular.module('spectralPlotter')
 			var serviceUrl = 'http://localhost:8080/atomicspectroscopy/api/data/lines/';
 			var dataUrl = serviceUrl + $scope.linesData.element + '/I';
 			var linesResponse = $http.get(dataUrl);
+
 			linesResponse.success(function(data, status, headers, config){
 				$scope.linesData.result = data;
 
 
-				//from here
-
-
-
-				//charts
+				//charts not using directive from here
 				google.charts.load('current', {'packages':['corechart']});
 		      	google.charts.setOnLoadCallback(drawChart);
 
@@ -45,11 +42,62 @@ angular.module('spectralPlotter')
 		        	};
 
 		        	var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
 		        	chart.draw(data, options);
 		      	}
+				//till here
 
 
+
+				//using a directive from here
+				var chart1 = {};
+			    chart1.type = "LineChart";
+			    chart1.cssStyle = "height:200px; width:300px;";
+			    chart1.data = {"cols": [
+			        {id: "month", label: "Month", type: "string"},
+			        {id: "laptop-id", label: "Laptop", type: "number"},
+			        {id: "desktop-id", label: "Desktop", type: "number"},
+			        {id: "server-id", label: "Server", type: "number"},
+			        {id: "cost-id", label: "Shipping", type: "number"}
+			    ], "rows": [
+			        {c: [
+			            {v: "January"},
+			            {v: 19, f: "42 items"},
+			            {v: 12, f: "Ony 12 items"},
+			            {v: 7, f: "7 servers"},
+			            {v: 4}
+			        ]},
+			        {c: [
+			            {v: "February"},
+			            {v: 13},
+			            {v: 1, f: "1 unit (Out of stock this month)"},
+			            {v: 12},
+			            {v: 2}
+			        ]},
+			        {c: [
+			            {v: "March"},
+			            {v: 24},
+			            {v: 0},
+			            {v: 11},
+			            {v: 6}
+
+			        ]}
+			    ]};
+
+			    chart1.options = {
+			        "title": "Sales per month",
+			        "isStacked": "true",
+			        "fill": 20,
+			        "displayExactValues": true,
+			        "vAxis": {
+			            "title": "Sales unit", "gridlines": {"count": 6}
+			        },
+			        "hAxis": {
+			            "title": "Date"
+			        }
+			    };
+
+			    chart1.formatters = {};
+			    $scope.chart1 = chart1;
 
 				//till here
 
