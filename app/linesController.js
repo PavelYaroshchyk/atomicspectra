@@ -47,7 +47,6 @@ angular.module('spectralPlotter')
 				//till here
 
 
-
 				//using a directive from here
 				var chart1 = {};
 			    chart1.type = "LineChart";
