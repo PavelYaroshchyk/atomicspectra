@@ -25,6 +25,7 @@ describe('given arrived at landed page', function(){
 describe('given arrived at lines page', function(){
 	describe('when the Al button is pressed', function(){
 		var linesTable = element(by.css('#lines-table'));
+		var linesChart = element(by.css('#lines-chart'));
 
 		beforeEach(function(){
 			browser.get('/#lines');
@@ -37,6 +38,10 @@ describe('given arrived at lines page', function(){
 
 		it('should produce a table with Al lines', function(){
 			expect(linesTable.isPresent()).toBeTruthy();
+		});
+
+		it ('should produce a line chart', function(){
+			expect(linesChart.isPresent()).toBeTruthy();
 		});
 	})
 });

@@ -8,15 +8,15 @@
 		</div>
 		<div ng-controller='LinesController'>
 
-			<div id="curve_chart"></div>
-			
-			<!--button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" ng-click='linesData.selectAl()'>Al</button-->
 
 			<button type="button" class="btn" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isAl]" ng-click='linesData.selectAl()'>Al</button>
 
 			<br>
 			<button class='btn btn' class="btn" ng-class="{true: 'btn-primary', false: 'btn-default disabled'}[linesData.isGo]"ng-click='linesData.fetchLines(item, $event)'>go</button>
 			<div ng-show = 'linesData.result != null'>
+
+				<div google-chart chart="linesData.linesChart" style={{linesData.linesChart.cssStyle}} id='lines-chart'></div>
+
 				<table id='lines-table' class='table table-striped'>
 					<thead>
 						<tr>
@@ -45,9 +45,6 @@
 		  				</tr>
 		  			</tbody>
 				</table>
-
-				<div google-chart chart="chart1"></div>
-
 			</div>
 		</div>
 	</body>
