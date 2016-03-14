@@ -28,7 +28,9 @@ angular.module('spectralPlotter')
 			        {id: "spec", label: "Spectrum", type: "number"},
 			        {id: "aSpec", label: "Al", type: "number"},
 			  
-			    ], "rows": [
+			    ], "rows": formatRows(data)
+
+			    /*"rows": [
 			        {c: [
 			            {v: 200},
 			            {v: 19, f: "label for 200 nm Al line"}
@@ -43,15 +45,15 @@ angular.module('spectralPlotter')
 			            {v: 800},
 			            {v: 2, f: "label for 800 nm Al line"}
 			        ]}
-			    ]};
+			    ]*/};
 
 			    chart1.options = {
 			        "title": "Atomic Spectrum",
 			        "isStacked": "true",
-			        "fill": 20,
+			        //"fill": 20,
 			        "displayExactValues": true,
 			        "vAxis": {
-			            "title": "Relative Intensity", "gridlines": {"count": 6}
+			            "title": "Intensity/a.u.", "gridlines": {"count": 6}
 			        },
 			        "hAxis": {
 			            "title": "Wavelength/nm"
@@ -61,7 +63,17 @@ angular.module('spectralPlotter')
 			    chart1.formatters = {};
 			    $scope.linesData.linesChart = chart1;
 
-				//till here
+				function formatRows(d){
+					var rows = [];
+					angular.forEach(d, function(value, key){
+
+						if (!isNaN(value.relInt)){
+							var column = {c: [{v: value.wl}, {v: value.relInt, f: "some label " + value.relInt}]};
+							rows.push(column);
+						} 
+					})
+			        return rows;
+				}
 
 
 			});
