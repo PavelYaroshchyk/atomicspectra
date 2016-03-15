@@ -17,6 +17,9 @@ angular.module('spectralPlotter')
 			var dataUrl = serviceUrl + $scope.linesData.element;
 			var linesResponse = $http.get(dataUrl);
 
+			console.log('gauss = ' + gauss());
+
+
 			linesResponse.success(function(data, status, headers, config){
 				$scope.linesData.result = data;
 
