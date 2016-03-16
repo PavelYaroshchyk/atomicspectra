@@ -18,11 +18,11 @@ angular.module('spectralPlotter')
 			var linesResponse = $http.get(dataUrl);
 
 
-			var junk = gauss(300, 0.5, 0.1, 100);
-			console.log(junk);
-			angular.forEach(junk, function(value, key){
-				console.log(value.wl + ': ' + value.inten);
-			});
+			//var junk = gauss(300, 0.5, 0.1, 100);
+			//console.log(junk);
+			//angular.forEach(junk, function(value, key){
+			//	console.log(value.wl + ': ' + value.inten);
+			//});
 
 
 
@@ -38,7 +38,7 @@ angular.module('spectralPlotter')
 			        {id: "spec", label: "Spectrum", type: "number"},
 			        {id: "aSpec", label: "Al", type: "number"},
 			  
-			    ], "rows": formatRows(data)
+			    ], "rows": junkLine(300, 0.5, 0.1, 100)//formatRows(data)
 
 			    /*"rows": [
 			        {c: [
@@ -78,7 +78,7 @@ angular.module('spectralPlotter')
 					angular.forEach(d, function(value, key){
 
 						if (!isNaN(value.relInt)){
-							var column = {c: [{v: value.wl}, {v: value.relInt, f: "some label " + value.relInt}]};
+							var column = {c: [{v: value.wl}, {v: value.relInt, f: "Al Intensity " + value.relInt}]};
 							rows.push(column);
 						} 
 					});

@@ -8,3 +8,15 @@ var gauss = function(centWl, fwhm, pixSize, numPix){
 	}
 	return profile;
 }
+
+var junkLine = function(centWl, fwhm, pixSize, numPix){
+	var data = gauss(centWl, fwhm, pixSize, numPix);
+		var rows = [];
+		angular.forEach(data, function(value, key){
+			var column = {c: [{v: value.wl}, {v: value.inten, f: "label " + value.inten}]};
+			console.log(column);
+
+			rows.push(column);
+		});
+	return rows;
+}
