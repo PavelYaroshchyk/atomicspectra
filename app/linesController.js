@@ -17,7 +17,14 @@ angular.module('spectralPlotter')
 			var dataUrl = serviceUrl + $scope.linesData.element;
 			var linesResponse = $http.get(dataUrl);
 
-			console.log('gauss = ' + gauss());
+
+			var junk = gauss(300, 0.5, 0.1, 100);
+			console.log(junk);
+			angular.forEach(junk, function(value, key){
+				console.log(value.wl + ': ' + value.inten);
+			});
+
+
 
 
 			linesResponse.success(function(data, status, headers, config){
@@ -74,7 +81,7 @@ angular.module('spectralPlotter')
 							var column = {c: [{v: value.wl}, {v: value.relInt, f: "some label " + value.relInt}]};
 							rows.push(column);
 						} 
-					})
+					});
 			        return rows;
 				}
 
