@@ -30,6 +30,8 @@ angular.module('spectralPlotter')
 			linesResponse.success(function(data, status, headers, config){
 				$scope.linesData.result = data;
 
+				var spec = getEmptySpec();
+
 				//using a directive from here
 				var chart1 = {};
 			    chart1.type = "LineChart";
@@ -38,7 +40,7 @@ angular.module('spectralPlotter')
 			        {id: "spec", label: "Spectrum", type: "number"},
 			        {id: "aSpec", label: "Al", type: "number"},
 			  
-			    ], "rows": junkLine(300, 0.5, 0.1, 100)//formatRows(data)
+			    ], "rows": junkLine2()//junkLine(200.431, 0.5)//formatRows(data)
 
 			    /*"rows": [
 			        {c: [
