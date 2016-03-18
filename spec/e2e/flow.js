@@ -38,10 +38,49 @@ describe('given arrived at lines page', function(){
 
 		it('should produce a table with Al lines', function(){
 			expect(linesTable.isPresent()).toBeTruthy();
+			var row = element.all(by.repeater('line in linesData.result')).first();
+			var cells = row.all(by.tagName('td'));
+			
+			var cellTexts = cells.map(function (elm) {
+    			return elm.getText();
+			});
+
+			expect(cellTexts).toEqual(['Al', 'I', '211.8312', 'g,a', '10300000', '0', '47192.38', '2', '4']);
+			//expect(cellTexts)[0].toEqual("Al");
+
 		});
+
 
 		it ('should produce a line chart', function(){
 			expect(linesChart.isPresent()).toBeTruthy();
 		});
 	})
+});
+
+describe('given arrived at lines page', function(){
+	describe('when the Al and Ca buttons are pressed', function(){
+		var linesTable = element(by.css('#lines-table'));
+		var linesChart = element(by.css('#lines-chart'));
+
+		beforeEach(function(){
+			browser.get('/#lines');
+			var aluminiumButton = element(by.buttonText('Al'));
+			var calciumButton = element(by.buttonText('Ca'));
+
+			aluminiumButton.click();
+			calciumButton.click();
+
+			var goBtn = element(by.buttonText('go'));
+			goBtn.click();
+
+			it('should produce a table with lines', function(){
+				expect(linesTable.isPresent()).toBeTruthy();
+			});
+
+			it ('should produce a line chart', function(){
+				expect(linesChart.isPresent()).toBeTruthy();
+			});
+
+		});
+	});
 });

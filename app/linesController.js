@@ -17,20 +17,10 @@ angular.module('spectralPlotter')
 			var dataUrl = serviceUrl + $scope.linesData.element;
 			var linesResponse = $http.get(dataUrl);
 
-
-			//var junk = gauss(300, 0.5, 0.1, 100);
-			//console.log(junk);
-			//angular.forEach(junk, function(value, key){
-			//	console.log(value.wl + ': ' + value.inten);
-			//});
-
-
-
-
 			linesResponse.success(function(data, status, headers, config){
 				$scope.linesData.result = data;
 
-				var spec = getEmptySpec();
+				var spec = getSpectrum(data, 0.5);
 
 				//using a directive from here
 				var chart1 = {};
@@ -40,7 +30,7 @@ angular.module('spectralPlotter')
 			        {id: "spec", label: "Spectrum", type: "number"},
 			        {id: "aSpec", label: "Al", type: "number"},
 			  
-			    ], "rows": junkLine2()//junkLine(200.431, 0.5)//formatRows(data)
+			    ], "rows": getFormattedSpectrum(data, 0.5)//formatRows(data)
 
 			    /*"rows": [
 			        {c: [
@@ -61,7 +51,7 @@ angular.module('spectralPlotter')
 
 			    chart1.options = {
 			        "title": "Atomic Spectrum",
-			        "isStacked": "true",
+			        //"isStacked": "true",
 			        //"fill": 20,
 			        "displayExactValues": true,
 			        "vAxis": {
