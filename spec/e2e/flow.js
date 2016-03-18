@@ -37,17 +37,15 @@ describe('given arrived at lines page', function(){
 		})
 
 		it('should produce a table with Al lines', function(){
+			
 			expect(linesTable.isPresent()).toBeTruthy();
 			var row = element.all(by.repeater('line in linesData.result')).first();
 			var cells = row.all(by.tagName('td'));
-			
-			var cellTexts = cells.map(function (elm) {
-    			return elm.getText();
+			var cellTexts = cells.map(function (e) {
+    			return e.getText();
 			});
 
 			expect(cellTexts).toEqual(['Al', 'I', '211.8312', 'g,a', '10300000', '0', '47192.38', '2', '4']);
-			//expect(cellTexts)[0].toEqual("Al");
-
 		});
 
 
@@ -72,15 +70,14 @@ describe('given arrived at lines page', function(){
 
 			var goBtn = element(by.buttonText('go'));
 			goBtn.click();
+		});
 
-			it('should produce a table with lines', function(){
+		it('should produce a table with lines', function(){
 				expect(linesTable.isPresent()).toBeTruthy();
 			});
 
 			it ('should produce a line chart', function(){
 				expect(linesChart.isPresent()).toBeTruthy();
 			});
-
-		});
 	});
 });
