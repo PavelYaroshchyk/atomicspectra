@@ -32,7 +32,7 @@ describe('given arrived at lines page', function(){
 			var aluminiumBtn = element(by.buttonText('Al'));
 			aluminiumBtn.click();
 
-			var goBtn = element(by.buttonText('go'));
+			var goBtn = element(by.buttonText('Go!'));
 			goBtn.click();
 		})
 
@@ -55,6 +55,36 @@ describe('given arrived at lines page', function(){
 	})
 });
 
+
+describe('given arrived at lines page', function(){
+	describe('when the H button is pressed', function(){
+		var linesTable = element(by.css('#lines-table'));
+		var linesChart = element(by.css('#lines-chart'));
+
+		beforeEach(function(){
+			browser.get('/#lines');
+			var aluminiumBtn = element(by.buttonText('H'));
+			aluminiumBtn.click();
+
+			var goBtn = element(by.buttonText('Go!'));
+			goBtn.click();
+		})
+
+		it('should produce a table with H lines and a chart', function(){
+			
+			expect(linesTable.isPresent()).toBeTruthy();
+			var row = element.all(by.repeater('line in linesData.result')).first();
+			var cells = row.all(by.tagName('td'));
+			var cellTexts = cells.map(function (e) {
+    			return e.getText();
+			});
+
+			expect(cellTexts).toContain('H');
+			expect(linesChart.isPresent()).toBeTruthy();
+		});
+	})
+});
+
 describe('given arrived at lines page', function(){
 	describe('when the Al and Ca buttons are pressed', function(){
 		var linesTable = element(by.css('#lines-table'));
@@ -68,7 +98,7 @@ describe('given arrived at lines page', function(){
 			aluminiumButton.click();
 			calciumButton.click();
 
-			var goBtn = element(by.buttonText('go'));
+			var goBtn = element(by.buttonText('Go!'));
 			goBtn.click();
 		});
 

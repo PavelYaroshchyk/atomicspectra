@@ -11,7 +11,9 @@
 			<div id = 'periodic-table'>
 				<table class='table-condensed'> 
 					<tr>
-						<td><button type="button" class="btn center-block">H</button></td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isH]" ng-click='linesData.selectH()'>H</button>
+						</td>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -28,11 +30,11 @@
 						<td></td>
 						<td></td>
 						<td></td>
-						<td><button type="button" class="btn center-block">He</button></td>
+						<td><button type="button" class="btn btn-block">He</button></td>
 					</tr>
 					<tr>
-						<td><button type="button" class="btn center-block">Li</button></td>
-						<td><button type="button" class="btn center-block">Be</button></td>
+						<td><button type="button" class="btn btn-block">Li</button></td>
+						<td><button type="button" class="btn btn-block">Be</button></td>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -43,16 +45,16 @@
 						<td></td>
 						<td></td>
 						<td></td>
-						<td><button type="button" class="btn center-block">B</button></td>
-						<td><button type="button" class="btn center-block">C</button></td>
-						<td><button type="button" class="btn center-block">N</button></td>
-						<td><button type="button" class="btn center-block">O</button></td>
-						<td><button type="button" class="btn center-block">F</button></td>
-						<td><button type="button" class="btn center-block">Ne</button></td>
+						<td><button type="button" class="btn btn-block">B</button></td>
+						<td><button type="button" class="btn btn-block">C</button></td>
+						<td><button type="button" class="btn btn-block">N</button></td>
+						<td><button type="button" class="btn btn-block">O</button></td>
+						<td><button type="button" class="btn btn-block">F</button></td>
+						<td><button type="button" class="btn btn-block">Ne</button></td>
 					</tr>
 					<tr>
-						<td><button type="button" class="btn center-block">Na</button></td>
-						<td><button type="button" class="btn center-block">Mg</button></td>
+						<td><button type="button" class="btn btn-block">Na</button></td>
+						<td><button type="button" class="btn btn-block">Mg</button></td>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -64,101 +66,101 @@
 						<td></td>
 						<td></td>
 						<td>
-							<button type="button" class="btn center-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isAl]" ng-click='linesData.selectAl()'>Al</button>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isAl]" ng-click='linesData.selectAl()'>Al</button>
 						</td>
-						<td><button type="button" class="btn center-block">Si</button></td>
-						<td><button type="button" class="btn center-block">P</button></td>
-						<td><button type="button" class="btn center-block">S</button></td>
-						<td><button type="button" class="btn center-block">Cl</button></td>
-						<td><button type="button" class="btn center-block">Ar</button></td>
+						<td><button type="button" class="btn btn-block">Si</button></td>
+						<td><button type="button" class="btn btn-block">P</button></td>
+						<td><button type="button" class="btn btn-block">S</button></td>
+						<td><button type="button" class="btn btn-block">Cl</button></td>
+						<td><button type="button" class="btn btn-block">Ar</button></td>
 					</tr>
 					<tr>
-						<td><button type="button" class="btn center-block">K</button></td>
+						<td><button type="button" class="btn btn-block">K</button></td>
 						<td>
-							<button type="button" class="btn center-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isCa]" ng-click='linesData.selectCa()'>Ca</button>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isCa]" ng-click='linesData.selectCa()'>Ca</button>
 						</td>
-						<td><button type="button" class="btn center-block">Sc</button></td>
-						<td><button type="button" class="btn center-block">Ti</button></td>
-						<td><button type="button" class="btn center-block">V</button></td>
-						<td><button type="button" class="btn center-block">Cr</button></td>
-						<td><button type="button" class="btn center-block">Mn</button></td>
-						<td><button type="button" class="btn center-block">Fe</button></td>
-						<td><button type="button" class="btn center-block">Co</button></td>
-						<td><button type="button" class="btn center-block">Ni</button></td>
-						<td><button type="button" class="btn center-block">Cu</button></td>
-						<td><button type="button" class="btn center-block">Zn</button></td>
-						<td><button type="button" class="btn center-block">Ga</button></td>
-						<td><button type="button" class="btn center-block">Ge</button></td>
-						<td><button type="button" class="btn center-block">As</button></td>
-						<td><button type="button" class="btn center-block">Se</button></td>
-						<td><button type="button" class="btn center-block">Br</button></td>
-						<td><button type="button" class="btn center-block">Kr</button></td>
+						<td><button type="button" class="btn btn-block">Sc</button></td>
+						<td><button type="button" class="btn btn-block">Ti</button></td>
+						<td><button type="button" class="btn btn-block">V</button></td>
+						<td><button type="button" class="btn btn-block">Cr</button></td>
+						<td><button type="button" class="btn btn-block">Mn</button></td>
+						<td><button type="button" class="btn btn-block">Fe</button></td>
+						<td><button type="button" class="btn btn-block">Co</button></td>
+						<td><button type="button" class="btn btn-block">Ni</button></td>
+						<td><button type="button" class="btn btn-block">Cu</button></td>
+						<td><button type="button" class="btn btn-block">Zn</button></td>
+						<td><button type="button" class="btn btn-block">Ga</button></td>
+						<td><button type="button" class="btn btn-block">Ge</button></td>
+						<td><button type="button" class="btn btn-block">As</button></td>
+						<td><button type="button" class="btn btn-block">Se</button></td>
+						<td><button type="button" class="btn btn-block">Br</button></td>
+						<td><button type="button" class="btn btn-block">Kr</button></td>
 					</tr>
 					<tr>
-						<td><button type="button" class="btn center-block">Rb</button></td>
-						<td><button type="button" class="btn center-block">Sr</button></td>
-						<td><button type="button" class="btn center-block">Y</button></td>
-						<td><button type="button" class="btn center-block">Zr</button></td>
-						<td><button type="button" class="btn center-block">Nb</button></td>
-						<td><button type="button" class="btn center-block">Mo</button></td>
-						<td><button type="button" class="btn center-block">Tc</button></td>
-						<td><button type="button" class="btn center-block">Ru</button></td>
-						<td><button type="button" class="btn center-block">Rh</button></td>
-						<td><button type="button" class="btn center-block">Pd</button></td>
-						<td><button type="button" class="btn center-block">Ag</button></td>
-						<td><button type="button" class="btn center-block">Cd</button></td>
-						<td><button type="button" class="btn center-block">In</button></td>
-						<td><button type="button" class="btn center-block">Sn</button></td>
-						<td><button type="button" class="btn center-block">Sb</button></td>
-						<td><button type="button" class="btn center-block">Te</button></td>
-						<td><button type="button" class="btn center-block">I</button></td>
-						<td><button type="button" class="btn center-block">Xe</button></td>
+						<td><button type="button" class="btn btn-block">Rb</button></td>
+						<td><button type="button" class="btn btn-block">Sr</button></td>
+						<td><button type="button" class="btn btn-block">Y</button></td>
+						<td><button type="button" class="btn btn-block">Zr</button></td>
+						<td><button type="button" class="btn btn-block">Nb</button></td>
+						<td><button type="button" class="btn btn-block">Mo</button></td>
+						<td><button type="button" class="btn btn-block">Tc</button></td>
+						<td><button type="button" class="btn btn-block">Ru</button></td>
+						<td><button type="button" class="btn btn-block">Rh</button></td>
+						<td><button type="button" class="btn btn-block">Pd</button></td>
+						<td><button type="button" class="btn btn-block">Ag</button></td>
+						<td><button type="button" class="btn btn-block">Cd</button></td>
+						<td><button type="button" class="btn btn-block">In</button></td>
+						<td><button type="button" class="btn btn-block">Sn</button></td>
+						<td><button type="button" class="btn btn-block">Sb</button></td>
+						<td><button type="button" class="btn btn-block">Te</button></td>
+						<td><button type="button" class="btn btn-block">I</button></td>
+						<td><button type="button" class="btn btn-block">Xe</button></td>
 					</tr>
 					<tr>
-						<td><button type="button" class="btn center-block">Cs</button></td>
-						<td><button type="button" class="btn center-block">Ba</button></td>
-						<td><button type="button" class="btn center-block">La</button></td>
-						<td><button type="button" class="btn center-block">Hf</button></td>
-						<td><button type="button" class="btn center-block">Ta</button></td>
-						<td><button type="button" class="btn center-block">W</button></td>
-						<td><button type="button" class="btn center-block">Re</button></td>
-						<td><button type="button" class="btn center-block">Os</button></td>
-						<td><button type="button" class="btn center-block">Ir</button></td>
-						<td><button type="button" class="btn center-block">Pt</button></td>
-						<td><button type="button" class="btn center-block">Au</button></td>
-						<td><button type="button" class="btn center-block">Hg</button></td>
-						<td><button type="button" class="btn center-block">Ti</button></td>
-						<td><button type="button" class="btn center-block">Pb</button></td>
-						<td><button type="button" class="btn center-block">Bi</button></td>
-						<td><button type="button" class="btn center-block">Po</button></td>
-						<td><button type="button" class="btn center-block">At</button></td>
-						<td><button type="button" class="btn center-block">Rn</button></td>
+						<td><button type="button" class="btn btn-block">Cs</button></td>
+						<td><button type="button" class="btn btn-block">Ba</button></td>
+						<td><button type="button" class="btn btn-block">La</button></td>
+						<td><button type="button" class="btn btn-block">Hf</button></td>
+						<td><button type="button" class="btn btn-block">Ta</button></td>
+						<td><button type="button" class="btn btn-block">W</button></td>
+						<td><button type="button" class="btn btn-block">Re</button></td>
+						<td><button type="button" class="btn btn-block">Os</button></td>
+						<td><button type="button" class="btn btn-block">Ir</button></td>
+						<td><button type="button" class="btn btn-block">Pt</button></td>
+						<td><button type="button" class="btn btn-block">Au</button></td>
+						<td><button type="button" class="btn btn-block">Hg</button></td>
+						<td><button type="button" class="btn btn-block">Ti</button></td>
+						<td><button type="button" class="btn btn-block">Pb</button></td>
+						<td><button type="button" class="btn btn-block">Bi</button></td>
+						<td><button type="button" class="btn btn-block">Po</button></td>
+						<td><button type="button" class="btn btn-block">At</button></td>
+						<td><button type="button" class="btn btn-block">Rn</button></td>
 					</tr>
 					<tr>
-						<td><button type="button" class="btn center-block">Fr</button></td>
-						<td><button type="button" class="btn center-block">Ra</button></td>
-						<td><button type="button" class="btn center-block">Ac</button></td>
-						<td><button type="button" class="btn center-block">Rf</button></td>
-						<td><button type="button" class="btn center-block">Db</button></td>
-						<td><button type="button" class="btn center-block">Sg</button></td>
-						<td><button type="button" class="btn center-block">Bh</button></td>
-						<td><button type="button" class="btn center-block">Hs</button></td>
-						<td><button type="button" class="btn center-block">Mt</button></td>
-						<td><button type="button" class="btn center-block">Ds</button></td>
-						<td><button type="button" class="btn center-block">Rg</button></td>
-						<td><button type="button" class="btn center-block">Cn</button></td>
-						<td><button type="button" class="btn center-block">Uut</button></td>
-						<td><button type="button" class="btn center-block">Fl</button></td>
-						<td><button type="button" class="btn center-block">Uup</button></td>
-						<td><button type="button" class="btn center-block">Lv</button></td>
-						<td><button type="button" class="btn center-block">Uus</button></td>
-						<td><button type="button" class="btn center-block">Uuo</button></td>
+						<td><button type="button" class="btn btn-block">Fr</button></td>
+						<td><button type="button" class="btn btn-block">Ra</button></td>
+						<td><button type="button" class="btn btn-block">Ac</button></td>
+						<td><button type="button" class="btn btn-block">Rf</button></td>
+						<td><button type="button" class="btn btn-block">Db</button></td>
+						<td><button type="button" class="btn btn-block">Sg</button></td>
+						<td><button type="button" class="btn btn-block">Bh</button></td>
+						<td><button type="button" class="btn btn-block">Hs</button></td>
+						<td><button type="button" class="btn btn-block">Mt</button></td>
+						<td><button type="button" class="btn btn-block">Ds</button></td>
+						<td><button type="button" class="btn btn-block">Rg</button></td>
+						<td><button type="button" class="btn btn-block">Cn</button></td>
+						<td><button type="button" class="btn btn-block">Uut</button></td>
+						<td><button type="button" class="btn btn-block">Fl</button></td>
+						<td><button type="button" class="btn btn-block">Uup</button></td>
+						<td><button type="button" class="btn btn-block">Lv</button></td>
+						<td><button type="button" class="btn btn-block">Uus</button></td>
+						<td><button type="button" class="btn btn-block">Uuo</button></td>
 					</tr>
 				</table>
 			</div>
 
 			<br>
-			<button class='btn btn' class="btn" ng-class="{true: 'btn-primary', false: 'btn-default disabled'}[linesData.isGo]"ng-click='linesData.fetchLines(item, $event)'>go</button>
+			<button class='btn btn' class="btn" ng-class="{true: 'btn-primary', false: 'btn-default disabled'}[linesData.isGo]"ng-click='linesData.fetchLines(item, $event)'>Go!</button>
 			<div ng-show = 'linesData.result != null'>
 
 				<div google-chart chart="linesData.linesChart" style={{linesData.linesChart.cssStyle}} id='lines-chart'></div>

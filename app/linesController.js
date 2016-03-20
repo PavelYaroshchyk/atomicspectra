@@ -4,6 +4,7 @@ angular.module('spectralPlotter')
 		$scope.linesData = {};
 		$scope.linesData.isAl = false;
 		$scope.linesData.isCa = false;
+		$scope.linesData.isH = false;
 		$scope.linesData.isGo = false;
 		$scope.linesData.elements = [];
 		$scope.linesData.fwhm = 0.5;
@@ -19,6 +20,11 @@ angular.module('spectralPlotter')
 				$scope.linesData.elements.splice(ind, 1);
 			}
 			$scope.linesData.isGo = ($scope.linesData.elements.length > 0);
+		}
+
+		$scope.linesData.selectH = function(){
+			$scope.linesData.updSelection('H');
+			$scope.linesData.isH = !$scope.linesData.isH;
 		}
 
 		$scope.linesData.selectAl = function(){
@@ -59,10 +65,16 @@ angular.module('spectralPlotter')
 				};
 
 			    chart1.options = {
+
+			    	explorer: {
+        				//maxZoomIn:0.1,
+        				keepInBounds: true,
+        				actions: ['dragToZoom', 'rightClickToReset'] 
+    				},
 			  
 			        "displayExactValues": true,
 			        "vAxis": {
-			            "title": "Intensity/a.u.", "gridlines": {"count": $scope.linesData.numHorGr}
+			            "title": "Intensity/a.u.", "gridlines": {"count": $scope.linesData.numHorGr}, "format": "scientific"
 			        },
 			        "hAxis": {
 			            "title": "Wavelength/nm"

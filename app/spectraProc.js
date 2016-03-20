@@ -41,6 +41,7 @@ var getEmptySpectrum = function(){
 var getSpectrum = function(data, fwhm){
 	var spectrum = getEmptySpectrum();
 	var wlLookupMap = spectrum.map(function(e){return e.wl;});
+	
 	angular.forEach(data, function(value, key){
 		var relIntDig = value.relInt.replace(/[^\d\.]/, '');
 		if (!isNaN(relIntDig) && !isNaN(value.wl)){
@@ -63,7 +64,7 @@ var getFormattedSpectrum = function(data, fwhm){
 var formatSpectrum = function(data){
 		var rows = [];
 		angular.forEach(data, function(value, key){
-			var column = {c: [{v: value.wl}, {v: value.inten, f: "label " + value.inten.toFixed(3)}]};
+			var column = {c: [{v: value.wl}, {v: value.inten, f: value.inten.toFixed(3)}]};
 			rows.push(column);
 		});
 	return rows;
