@@ -1,20 +1,39 @@
 angular.module('spectralPlotter')
-	.controller('LinesController',['$scope', '$http', function($scope, $http){
+	.controller('LinesController',['$scope', '$http', '$q', function($scope, $http){
 	
 		$scope.linesData = {};
 		$scope.linesData.isAl = false;
+		$scope.linesData.isCa = false;
 		$scope.linesData.isGo = false;
-		$scope.linesData.element = '';
-		$scope.linesData.selectAl = function(){
-			//$scope.linesData.element = 'Al';
-			$scope.linesData.isAl = !$scope.linesData.isAl;
-			$scope.linesData.element = $scope.linesData.isAl == true ? 'Al' : false;
-			$scope.linesData.isGo = $scope.linesData.isAl;
+		$scope.linesData.elements = [];
+
+
+		$scope.linesData.updSelection = function(el){
+
+			var ind = $scope.linesData.elements.indexOf(el);
+			if (ind == -1){
+				$scope.linesData.elements.push(el);
+			} else {
+				$scope.linesData.elements.splice(ind, 1);
+			}
+			$scope.linesData.isGo = ($scope.linesData.elements.length > 0);
 		}
+
+
+		$scope.linesData.selectAl = function(){
+			$scope.linesData.updSelection('Al');
+			$scope.linesData.isAl = !$scope.linesData.isAl;
+		}
+
+		$scope.linesData.selectCa = function(){
+			$scope.linesData.updSelection('Ca');
+			$scope.linesData.isCa = !$scope.linesData.isCa;
+		}
+
 
 		$scope.linesData.fetchLines = function(item, event){
 			var serviceUrl = 'http://localhost:8080/atomicspectroscopy/api/data/lines/';
-			var dataUrl = serviceUrl + $scope.linesData.element;
+			var dataUrl = serviceUrl + $scope.linesData.elements[0];// + '?wlFrom=400.0&wlTo=500.0';
 			var linesResponse = $http.get(dataUrl);
 
 			linesResponse.success(function(data, status, headers, config){

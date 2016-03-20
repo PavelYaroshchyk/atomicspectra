@@ -45,6 +45,7 @@ describe('given arrived at lines page', function(){
     			return e.getText();
 			});
 
+			expect(cellTexts).toContain('Al');
 			expect(cellTexts).toEqual(['Al', 'I', '211.8312', 'g,a', '10300000', '0', '47192.38', '2', '4']);
 		});
 

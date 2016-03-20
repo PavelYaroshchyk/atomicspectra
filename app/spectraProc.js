@@ -2,9 +2,7 @@ var constants = {minWl: 200, maxWl: 1000, pixSize: 0.1, numPix: 100};
 
 var gauss = function(centWl, relInt, fwhm){
 	var profile = [];
-
 	centWl = findCentPix(centWl);
-	
 	var wlStart = centWl - constants.numPix * constants.pixSize/2;
 	for (var i = 0; i < constants.numPix; i++){
 		var curWl = wlStart + i * constants.pixSize;
@@ -42,12 +40,13 @@ var getEmptySpectrum = function(){
 
 var getSpectrum = function(data, fwhm){
 	var spectrum = getEmptySpectrum();
+	var wlLookupMap = spectrum.map(function(e){return e.wl;});
 	angular.forEach(data, function(value, key){
 		var relIntDig = value.relInt.replace(/[^\d\.]/, '');
 		if (!isNaN(relIntDig) && !isNaN(value.wl)){
 			var line = gauss(value.wl, relIntDig, fwhm);
 			var lineStart = line[0].wl.toFixed(3);
-			var startPix = spectrum.map(function(e) { return e.wl; }).indexOf(lineStart);
+			var startPix = wlLookupMap.indexOf(lineStart);
 			for (var i = 0; i < line.length; i++){
 				spectrum[startPix + i].inten += line[i].inten;
 			}
