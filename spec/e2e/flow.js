@@ -49,7 +49,6 @@ describe('given arrived at lines page', function(){
 			expect(cellTexts).toEqual(['Al', 'I', '211.8312', 'g,a', '10300000', '0', '47192.38', '2', '4']);
 		});
 
-
 		it ('should produce a line chart', function(){
 			expect(linesChart.isPresent()).toBeTruthy();
 		});
@@ -73,12 +72,12 @@ describe('given arrived at lines page', function(){
 			goBtn.click();
 		});
 
-		it('should produce a table with lines', function(){
-				expect(linesTable.isPresent()).toBeTruthy();
-			});
+		it('should produce a table with lines and a line chart', function(){
+			expect(linesTable.isPresent()).toBeTruthy();
+		});
 
-			it ('should produce a line chart', function(){
-				expect(linesChart.isPresent()).toBeTruthy();
-			});
+		it ('should produce a line chart', function(){
+			expect(linesChart.isPresent()).toBeTruthy();
+		});
 	});
 });

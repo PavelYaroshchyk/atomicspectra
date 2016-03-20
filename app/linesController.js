@@ -1,11 +1,13 @@
 angular.module('spectralPlotter')
-	.controller('LinesController',['$scope', '$http', '$q', function($scope, $http){
+	.controller('LinesController',['$scope', '$http', '$q', function($scope, $http, $q){
 	
 		$scope.linesData = {};
 		$scope.linesData.isAl = false;
 		$scope.linesData.isCa = false;
 		$scope.linesData.isGo = false;
 		$scope.linesData.elements = [];
+		$scope.linesData.fwhm = 0.5;
+		$scope.linesData.numHorGr = 6;
 
 
 		$scope.linesData.updSelection = function(el){
@@ -18,7 +20,6 @@ angular.module('spectralPlotter')
 			}
 			$scope.linesData.isGo = ($scope.linesData.elements.length > 0);
 		}
-
 
 		$scope.linesData.selectAl = function(){
 			$scope.linesData.updSelection('Al');
@@ -33,48 +34,68 @@ angular.module('spectralPlotter')
 
 		$scope.linesData.fetchLines = function(item, event){
 			var serviceUrl = 'http://localhost:8080/atomicspectroscopy/api/data/lines/';
-			var dataUrl = serviceUrl + $scope.linesData.elements[0];// + '?wlFrom=400.0&wlTo=500.0';
-			var linesResponse = $http.get(dataUrl);
+			var linesResponses = [];
 
-			linesResponse.success(function(data, status, headers, config){
+			for (var i = 0; i < $scope.linesData.elements.length; i++){
+				var dataUrl = serviceUrl + $scope.linesData.elements[i];	
+				linesResponses[i] = $http.get(dataUrl);
+			}
+
+			$q.all(linesResponses).then(function(values) {
+
+				var data = [];
+				angular.forEach(values, function(value, key){
+					data = data.concat(value.data);
+				});
 				$scope.linesData.result = data;
 
-				var spec = getSpectrum(data, 0.5);
-
-				//using a directive from here
 				var chart1 = {};
 			    chart1.type = "LineChart";
 			    chart1.cssStyle = "height:400px;";
 			    chart1.data = {"cols": [
 			        {id: "spec", label: "Spectrum", type: "number"},
-			        {id: "aSpec", label: "Al", type: "number"},
-			  
-			    ], "rows": getFormattedSpectrum(data, 0.5)//formatRows(data)
-
-			    /*"rows": [
-			        {c: [
-			            {v: 200},
-			            {v: 19, f: "label for 200 nm Al line"}
-			           
-			        ]},
-			        {c: [
-			        	{v: 300},
-			            {v: 10, f: "label for 300 nm Al line"}
-			            
-			        ]},
-			        {c: [
-			            {v: 800},
-			            {v: 2, f: "label for 800 nm Al line"}
-			        ]}
-			    ]*/};
+			        {id: "aSpec", label: $scope.linesData.elements.join(', '), type: "number"}], 
+			        "rows": getFormattedSpectrum(data, $scope.linesData.fwhm)
+				};
 
 			    chart1.options = {
-			        "title": "Atomic Spectrum",
-			        //"isStacked": "true",
-			        //"fill": 20,
+			  
 			        "displayExactValues": true,
 			        "vAxis": {
-			            "title": "Intensity/a.u.", "gridlines": {"count": 6}
+			            "title": "Intensity/a.u.", "gridlines": {"count": $scope.linesData.numHorGr}
+			        },
+			        "hAxis": {
+			            "title": "Wavelength/nm"
+			        }
+			    };
+
+			    chart1.formatters = {};
+			    $scope.linesData.linesChart = chart1;
+    			
+			});
+
+
+
+			/*var dataUrl = serviceUrl + $scope.linesData.elements[0];// + '?wlFrom=400.0&wlTo=500.0';
+			var linesResponse = $http.get(dataUrl);
+
+			linesResponse.success(function(data, status, headers, config){
+				$scope.linesData.result = data;
+
+				var chart1 = {};
+			    chart1.type = "LineChart";
+			    chart1.cssStyle = "height:400px;";
+			    chart1.data = {"cols": [
+			        {id: "spec", label: "Spectrum", type: "number"},
+			        {id: "aSpec", label: $scope.linesData.elements.join(', '), type: "number"}], 
+			        "rows": getFormattedSpectrum(data, $scope.linesData.fwhm)
+				};
+
+			    chart1.options = {
+			        //"title": "Atomic Spectrum",
+			        "displayExactValues": true,
+			        "vAxis": {
+			            "title": "Intensity/a.u.", "gridlines": {"count": $scope.linesData.numHorGr}
 			        },
 			        "hAxis": {
 			            "title": "Wavelength/nm"
@@ -100,7 +121,7 @@ angular.module('spectralPlotter')
 			});
 			linesResponse.error(function(data, status, headers, config){
 				console.log('failed get lines request' + status);
-			});
+			}); */
 		}
 
 	}]);
