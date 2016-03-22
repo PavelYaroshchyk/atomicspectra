@@ -11,8 +11,7 @@ angular.module('spectralPlotter')
 		$scope.linesData.numHorGr = 6;
 
 
-		$scope.linesData.updSelection = function(el){
-
+		/*$scope.linesData.updSelection = function(el){
 			var ind = $scope.linesData.elements.indexOf(el);
 			if (ind == -1){
 				$scope.linesData.elements.push(el);
@@ -22,23 +21,32 @@ angular.module('spectralPlotter')
 			$scope.linesData.isGo = ($scope.linesData.elements.length > 0);
 		}
 
-		$scope.linesData.selectH = function(){
-			$scope.linesData.updSelection('H');
-			$scope.linesData.isH = !$scope.linesData.isH;
-		}
-
 		$scope.linesData.selectAl = function(){
 			$scope.linesData.updSelection('Al');
 			$scope.linesData.isAl = !$scope.linesData.isAl;
 		}
 
+		$scope.linesData.selectH = function(){
+			$scope.linesData.updSelection('H');
+			$scope.linesData.isH = !$scope.linesData.isH;
+		}
+
 		$scope.linesData.selectCa = function(){
 			$scope.linesData.updSelection('Ca');
 			$scope.linesData.isCa = !$scope.linesData.isCa;
+		}*/
+
+		var gatherElements = function(){
+			if ($scope.linesData.isAl) $scope.linesData.elements.push('Al');
+			if ($scope.linesData.isH) $scope.linesData.elements.push('H');
+			if ($scope.linesData.isCa) $scope.linesData.elements.push('Ca');
 		}
 
 
+
 		$scope.linesData.fetchLines = function(item, event){
+			
+			gatherElements();
 			var serviceUrl = 'http://localhost:8080/atomicspectroscopy/api/data/lines/';
 			var linesResponses = [];
 
@@ -71,10 +79,12 @@ angular.module('spectralPlotter')
         				keepInBounds: true,
         				actions: ['dragToZoom', 'rightClickToReset'] 
     				},
+
+    				legend: { position: 'bottom' },
 			  
 			        "displayExactValues": true,
 			        "vAxis": {
-			            "title": "Intensity/a.u.", "gridlines": {"count": $scope.linesData.numHorGr}, "format": "scientific"
+			            "title": "Intensity/a.u."//, "gridlines": {"count": $scope.linesData.numHorGr}
 			        },
 			        "hAxis": {
 			            "title": "Wavelength/nm"

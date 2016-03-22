@@ -1,166 +1,171 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Atomic Spectroscopy v. 0.1 Home</title>
+		<!--title>Atomic Spectroscopy v. 0.1 Home</title-->
 	</head>
 	<body>
-		<div id='lines'>
-		</div>
+		<!--div id='lines'></div-->
+
 		<div ng-controller='LinesController'>
 
-			<div id = 'periodic-table'>
-				<table class='table-condensed'> 
-					<tr>
-						<td>
-							<button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isH]" ng-click='linesData.selectH()'>H</button>
-						</td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td><button type="button" class="btn btn-block">He</button></td>
-					</tr>
-					<tr>
-						<td><button type="button" class="btn btn-block">Li</button></td>
-						<td><button type="button" class="btn btn-block">Be</button></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td><button type="button" class="btn btn-block">B</button></td>
-						<td><button type="button" class="btn btn-block">C</button></td>
-						<td><button type="button" class="btn btn-block">N</button></td>
-						<td><button type="button" class="btn btn-block">O</button></td>
-						<td><button type="button" class="btn btn-block">F</button></td>
-						<td><button type="button" class="btn btn-block">Ne</button></td>
-					</tr>
-					<tr>
-						<td><button type="button" class="btn btn-block">Na</button></td>
-						<td><button type="button" class="btn btn-block">Mg</button></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td>
-							<button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isAl]" ng-click='linesData.selectAl()'>Al</button>
-						</td>
-						<td><button type="button" class="btn btn-block">Si</button></td>
-						<td><button type="button" class="btn btn-block">P</button></td>
-						<td><button type="button" class="btn btn-block">S</button></td>
-						<td><button type="button" class="btn btn-block">Cl</button></td>
-						<td><button type="button" class="btn btn-block">Ar</button></td>
-					</tr>
-					<tr>
-						<td><button type="button" class="btn btn-block">K</button></td>
-						<td>
-							<button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isCa]" ng-click='linesData.selectCa()'>Ca</button>
-						</td>
-						<td><button type="button" class="btn btn-block">Sc</button></td>
-						<td><button type="button" class="btn btn-block">Ti</button></td>
-						<td><button type="button" class="btn btn-block">V</button></td>
-						<td><button type="button" class="btn btn-block">Cr</button></td>
-						<td><button type="button" class="btn btn-block">Mn</button></td>
-						<td><button type="button" class="btn btn-block">Fe</button></td>
-						<td><button type="button" class="btn btn-block">Co</button></td>
-						<td><button type="button" class="btn btn-block">Ni</button></td>
-						<td><button type="button" class="btn btn-block">Cu</button></td>
-						<td><button type="button" class="btn btn-block">Zn</button></td>
-						<td><button type="button" class="btn btn-block">Ga</button></td>
-						<td><button type="button" class="btn btn-block">Ge</button></td>
-						<td><button type="button" class="btn btn-block">As</button></td>
-						<td><button type="button" class="btn btn-block">Se</button></td>
-						<td><button type="button" class="btn btn-block">Br</button></td>
-						<td><button type="button" class="btn btn-block">Kr</button></td>
-					</tr>
-					<tr>
-						<td><button type="button" class="btn btn-block">Rb</button></td>
-						<td><button type="button" class="btn btn-block">Sr</button></td>
-						<td><button type="button" class="btn btn-block">Y</button></td>
-						<td><button type="button" class="btn btn-block">Zr</button></td>
-						<td><button type="button" class="btn btn-block">Nb</button></td>
-						<td><button type="button" class="btn btn-block">Mo</button></td>
-						<td><button type="button" class="btn btn-block">Tc</button></td>
-						<td><button type="button" class="btn btn-block">Ru</button></td>
-						<td><button type="button" class="btn btn-block">Rh</button></td>
-						<td><button type="button" class="btn btn-block">Pd</button></td>
-						<td><button type="button" class="btn btn-block">Ag</button></td>
-						<td><button type="button" class="btn btn-block">Cd</button></td>
-						<td><button type="button" class="btn btn-block">In</button></td>
-						<td><button type="button" class="btn btn-block">Sn</button></td>
-						<td><button type="button" class="btn btn-block">Sb</button></td>
-						<td><button type="button" class="btn btn-block">Te</button></td>
-						<td><button type="button" class="btn btn-block">I</button></td>
-						<td><button type="button" class="btn btn-block">Xe</button></td>
-					</tr>
-					<tr>
-						<td><button type="button" class="btn btn-block">Cs</button></td>
-						<td><button type="button" class="btn btn-block">Ba</button></td>
-						<td><button type="button" class="btn btn-block">La</button></td>
-						<td><button type="button" class="btn btn-block">Hf</button></td>
-						<td><button type="button" class="btn btn-block">Ta</button></td>
-						<td><button type="button" class="btn btn-block">W</button></td>
-						<td><button type="button" class="btn btn-block">Re</button></td>
-						<td><button type="button" class="btn btn-block">Os</button></td>
-						<td><button type="button" class="btn btn-block">Ir</button></td>
-						<td><button type="button" class="btn btn-block">Pt</button></td>
-						<td><button type="button" class="btn btn-block">Au</button></td>
-						<td><button type="button" class="btn btn-block">Hg</button></td>
-						<td><button type="button" class="btn btn-block">Ti</button></td>
-						<td><button type="button" class="btn btn-block">Pb</button></td>
-						<td><button type="button" class="btn btn-block">Bi</button></td>
-						<td><button type="button" class="btn btn-block">Po</button></td>
-						<td><button type="button" class="btn btn-block">At</button></td>
-						<td><button type="button" class="btn btn-block">Rn</button></td>
-					</tr>
-					<tr>
-						<td><button type="button" class="btn btn-block">Fr</button></td>
-						<td><button type="button" class="btn btn-block">Ra</button></td>
-						<td><button type="button" class="btn btn-block">Ac</button></td>
-						<td><button type="button" class="btn btn-block">Rf</button></td>
-						<td><button type="button" class="btn btn-block">Db</button></td>
-						<td><button type="button" class="btn btn-block">Sg</button></td>
-						<td><button type="button" class="btn btn-block">Bh</button></td>
-						<td><button type="button" class="btn btn-block">Hs</button></td>
-						<td><button type="button" class="btn btn-block">Mt</button></td>
-						<td><button type="button" class="btn btn-block">Ds</button></td>
-						<td><button type="button" class="btn btn-block">Rg</button></td>
-						<td><button type="button" class="btn btn-block">Cn</button></td>
-						<td><button type="button" class="btn btn-block">Uut</button></td>
-						<td><button type="button" class="btn btn-block">Fl</button></td>
-						<td><button type="button" class="btn btn-block">Uup</button></td>
-						<td><button type="button" class="btn btn-block">Lv</button></td>
-						<td><button type="button" class="btn btn-block">Uus</button></td>
-						<td><button type="button" class="btn btn-block">Uuo</button></td>
-					</tr>
-				</table>
+			<div id = 'periodic-table' class='center-block'>
+			<table class='table-condensed'> 
+				<tr>
+					<td>
+						<!--button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isH]" ng-click='linesData.selectH()'>H</button-->
+						<button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isH]" ng-click='linesData.isH = !linesData.isH'>H</button>
+					</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td><button type="button" class="btn btn-block">He</button></td>
+				</tr>
+				<tr>
+					<td><button type="button" class="btn btn-block">Li</button></td>
+					<td><button type="button" class="btn btn-block">Be</button></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td><button type="button" class="btn btn-block">B</button></td>
+					<td><button type="button" class="btn btn-block">C</button></td>
+					<td><button type="button" class="btn btn-block">N</button></td>
+					<td><button type="button" class="btn btn-block">O</button></td>
+					<td><button type="button" class="btn btn-block">F</button></td>
+					<td><button type="button" class="btn btn-block">Ne</button></td>
+				</tr>
+				<tr>
+					<td><button type="button" class="btn btn-block">Na</button></td>
+					<td><button type="button" class="btn btn-block">Mg</button></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>
+						<button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isAl]" ng-click='linesData.isAl = !linesData.isAl'>Al</button>
+					</td>
+					<td><button type="button" class="btn btn-block">Si</button></td>
+					<td><button type="button" class="btn btn-block">P</button></td>
+					<td><button type="button" class="btn btn-block">S</button></td>
+					<td><button type="button" class="btn btn-block">Cl</button></td>
+					<td><button type="button" class="btn btn-block">Ar</button></td>
+				</tr>
+				<tr>
+					<td><button type="button" class="btn btn-block">K</button></td>
+					<td>
+						<!--button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isCa]" ng-click='linesData.selectCa()'>Ca</button-->
+						<button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isCa]" ng-click='linesData.isCa = !linesData.isCa'>Ca</button>
+					</td>
+					<td><button type="button" class="btn btn-block">Sc</button></td>
+					<td><button type="button" class="btn btn-block">Ti</button></td>
+					<td><button type="button" class="btn btn-block">V</button></td>
+					<td><button type="button" class="btn btn-block">Cr</button></td>
+					<td><button type="button" class="btn btn-block">Mn</button></td>
+					<td><button type="button" class="btn btn-block">Fe</button></td>
+					<td><button type="button" class="btn btn-block">Co</button></td>
+					<td><button type="button" class="btn btn-block">Ni</button></td>
+					<td><button type="button" class="btn btn-block">Cu</button></td>
+					<td><button type="button" class="btn btn-block">Zn</button></td>
+					<td><button type="button" class="btn btn-block">Ga</button></td>
+					<td><button type="button" class="btn btn-block">Ge</button></td>
+					<td><button type="button" class="btn btn-block">As</button></td>
+					<td><button type="button" class="btn btn-block">Se</button></td>
+					<td><button type="button" class="btn btn-block">Br</button></td>
+					<td><button type="button" class="btn btn-block">Kr</button></td>
+				</tr>
+				<tr>
+					<td><button type="button" class="btn btn-block">Rb</button></td>
+					<td><button type="button" class="btn btn-block">Sr</button></td>
+					<td><button type="button" class="btn btn-block">Y</button></td>
+					<td><button type="button" class="btn btn-block">Zr</button></td>
+					<td><button type="button" class="btn btn-block">Nb</button></td>
+					<td><button type="button" class="btn btn-block">Mo</button></td>
+					<td><button type="button" class="btn btn-block">Tc</button></td>
+					<td><button type="button" class="btn btn-block">Ru</button></td>
+					<td><button type="button" class="btn btn-block">Rh</button></td>
+					<td><button type="button" class="btn btn-block">Pd</button></td>
+					<td><button type="button" class="btn btn-block">Ag</button></td>
+					<td><button type="button" class="btn btn-block">Cd</button></td>
+					<td><button type="button" class="btn btn-block">In</button></td>
+					<td><button type="button" class="btn btn-block">Sn</button></td>
+					<td><button type="button" class="btn btn-block">Sb</button></td>
+					<td><button type="button" class="btn btn-block">Te</button></td>
+					<td><button type="button" class="btn btn-block">I</button></td>
+					<td><button type="button" class="btn btn-block">Xe</button></td>
+				</tr>
+				<tr>
+					<td><button type="button" class="btn btn-block">Cs</button></td>
+					<td><button type="button" class="btn btn-block">Ba</button></td>
+					<td><button type="button" class="btn btn-block">La</button></td>
+					<td><button type="button" class="btn btn-block">Hf</button></td>
+					<td><button type="button" class="btn btn-block">Ta</button></td>
+					<td><button type="button" class="btn btn-block">W</button></td>
+					<td><button type="button" class="btn btn-block">Re</button></td>
+					<td><button type="button" class="btn btn-block">Os</button></td>
+					<td><button type="button" class="btn btn-block">Ir</button></td>
+					<td><button type="button" class="btn btn-block">Pt</button></td>
+					<td><button type="button" class="btn btn-block">Au</button></td>
+					<td><button type="button" class="btn btn-block">Hg</button></td>
+					<td><button type="button" class="btn btn-block">Ti</button></td>
+					<td><button type="button" class="btn btn-block">Pb</button></td>
+					<td><button type="button" class="btn btn-block">Bi</button></td>
+					<td><button type="button" class="btn btn-block">Po</button></td>
+					<td><button type="button" class="btn btn-block">At</button></td>
+					<td><button type="button" class="btn btn-block">Rn</button></td>
+				</tr>
+				<tr>
+					<td><button type="button" class="btn btn-block">Fr</button></td>
+					<td><button type="button" class="btn btn-block">Ra</button></td>
+					<td><button type="button" class="btn btn-block">Ac</button></td>
+					<td><button type="button" class="btn btn-block">Rf</button></td>
+					<td><button type="button" class="btn btn-block">Db</button></td>
+					<td><button type="button" class="btn btn-block">Sg</button></td>
+					<td><button type="button" class="btn btn-block">Bh</button></td>
+					<td><button type="button" class="btn btn-block">Hs</button></td>
+					<td><button type="button" class="btn btn-block">Mt</button></td>
+					<td><button type="button" class="btn btn-block">Ds</button></td>
+					<td><button type="button" class="btn btn-block">Rg</button></td>
+					<td><button type="button" class="btn btn-block">Cn</button></td>
+					<td><button type="button" class="btn btn-block">Uut</button></td>
+					<td><button type="button" class="btn btn-block">Fl</button></td>
+					<td><button type="button" class="btn btn-block">Uup</button></td>
+					<td><button type="button" class="btn btn-block">Lv</button></td>
+					<td><button type="button" class="btn btn-block">Uus</button></td>
+					<td><button type="button" class="btn btn-block">Uuo</button></td>
+				</tr>
+			</table>
 			</div>
 
-			<br>
-			<button class='btn btn' class="btn" ng-class="{true: 'btn-primary', false: 'btn-default disabled'}[linesData.isGo]"ng-click='linesData.fetchLines(item, $event)'>Go!</button>
+			<!--button class='btn btn' class="btn" ng-class="{true: 'btn-primary', false: 'btn-default disabled'}[linesData.isGo]"ng-click='linesData.fetchLines(item, $event)'>Go!</button-->
+
+			<button class='btn btn' class="btn" ng-class="{true: 'btn-primary', false: 'btn-default disabled'}[linesData.isAl || linesData.isCa || linesData.isH]"ng-click='linesData.fetchLines(item, $event)'>Go!</button>
+			
+
 			<div ng-show = 'linesData.result != null'>
 
 				<div google-chart chart="linesData.linesChart" style={{linesData.linesChart.cssStyle}} id='lines-chart'></div>
@@ -193,7 +198,7 @@
 		  				</tr>
 		  			</tbody>
 				</table>
-			</div>
+			</div>	
 		</div>
 	</body>
 </html>
