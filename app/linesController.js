@@ -1,6 +1,5 @@
 angular.module('spectralPlotter')
 	.controller('LinesController',['$scope', '$http', '$q', function($scope, $http, $q){
-	
 		$scope.linesData = {};
 		$scope.linesData.isAl = false;
 		$scope.linesData.isCa = false;
@@ -10,39 +9,11 @@ angular.module('spectralPlotter')
 		$scope.linesData.fwhm = 0.5;
 		$scope.linesData.numHorGr = 6;
 
-
-		/*$scope.linesData.updSelection = function(el){
-			var ind = $scope.linesData.elements.indexOf(el);
-			if (ind == -1){
-				$scope.linesData.elements.push(el);
-			} else {
-				$scope.linesData.elements.splice(ind, 1);
-			}
-			$scope.linesData.isGo = ($scope.linesData.elements.length > 0);
-		}
-
-		$scope.linesData.selectAl = function(){
-			$scope.linesData.updSelection('Al');
-			$scope.linesData.isAl = !$scope.linesData.isAl;
-		}
-
-		$scope.linesData.selectH = function(){
-			$scope.linesData.updSelection('H');
-			$scope.linesData.isH = !$scope.linesData.isH;
-		}
-
-		$scope.linesData.selectCa = function(){
-			$scope.linesData.updSelection('Ca');
-			$scope.linesData.isCa = !$scope.linesData.isCa;
-		}*/
-
 		var gatherElements = function(){
-			if ($scope.linesData.isAl) $scope.linesData.elements.push('Al');
-			if ($scope.linesData.isH) $scope.linesData.elements.push('H');
-			if ($scope.linesData.isCa) $scope.linesData.elements.push('Ca');
+			if ($scope.linesData.isAl && $scope.linesData.elements.indexOf('Al') == -1) $scope.linesData.elements.push('Al');
+			if ($scope.linesData.isH && $scope.linesData.elements.indexOf('H') == -1)   $scope.linesData.elements.push('H');
+			if ($scope.linesData.isCa && $scope.linesData.elements.indexOf('Ca') == -1) $scope.linesData.elements.push('Ca');
 		}
-
-
 
 		$scope.linesData.fetchLines = function(item, event){
 			
@@ -95,55 +66,26 @@ angular.module('spectralPlotter')
 			    $scope.linesData.linesChart = chart1;
     			
 			});
-
-
-
-			/*var dataUrl = serviceUrl + $scope.linesData.elements[0];// + '?wlFrom=400.0&wlTo=500.0';
-			var linesResponse = $http.get(dataUrl);
-
-			linesResponse.success(function(data, status, headers, config){
-				$scope.linesData.result = data;
-
-				var chart1 = {};
-			    chart1.type = "LineChart";
-			    chart1.cssStyle = "height:400px;";
-			    chart1.data = {"cols": [
-			        {id: "spec", label: "Spectrum", type: "number"},
-			        {id: "aSpec", label: $scope.linesData.elements.join(', '), type: "number"}], 
-			        "rows": getFormattedSpectrum(data, $scope.linesData.fwhm)
-				};
-
-			    chart1.options = {
-			        //"title": "Atomic Spectrum",
-			        "displayExactValues": true,
-			        "vAxis": {
-			            "title": "Intensity/a.u.", "gridlines": {"count": $scope.linesData.numHorGr}
-			        },
-			        "hAxis": {
-			            "title": "Wavelength/nm"
-			        }
-			    };
-
-			    chart1.formatters = {};
-			    $scope.linesData.linesChart = chart1;
-
-				function formatRows(d){
-					var rows = [];
-					angular.forEach(d, function(value, key){
-
-						if (!isNaN(value.relInt)){
-							var column = {c: [{v: value.wl}, {v: value.relInt, f: "Al Intensity " + value.relInt}]};
-							rows.push(column);
-						} 
-					});
-			        return rows;
-				}
-
-
-			});
-			linesResponse.error(function(data, status, headers, config){
-				console.log('failed get lines request' + status);
-			}); */
 		}
+	}])
+	.directive('setClassWhenAtTop', ['$window', function($window) {
+    var $win = angular.element($window); // wrap window object as jQuery object
 
-	}]);
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs)
+        {
+            var topClass = attrs.setClassWhenAtTop, // get CSS class from directive's attribute value
+                topPadding = parseInt(attrs.paddingWhenAtTop, 10),
+                offsetTop = element.prop('offsetTop'); // get element's offset top relative to document
+
+            $win.on('scroll', function (e) {
+                if ($window.pageYOffset + topPadding >= offsetTop) {
+                    element.addClass(topClass);
+                } else {
+                    element.removeClass(topClass);
+                }
+            });
+        }
+    };
+}]);
