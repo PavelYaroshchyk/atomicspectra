@@ -10,10 +10,10 @@
 		    z-index: 999;
 		    width: 100%;
 		    background-color: #F44336;
-		    color:#fff;
+		    color: #FFFFFF;
 		}
 		.dummy {
-		    height: 50px;
+		    height: 40px;
 		    z-index: 999;
 		    width: 100%;
 		    background-color: #66CCFF;
@@ -30,6 +30,7 @@
 	<body>
 		<div ng-controller='LinesController'>
 
+			<div id='anchor-elements' class='anchor'></div>
 			<div id = 'periodic-table' class='center-block'>
 				<table class='table-condensed'> 
 					<tr>
@@ -182,24 +183,27 @@
 					</tr>
 				</table>
 	
-				<button class="btn dummy-two" ng-class="{true: 'btn-primary', false: 'btn-default disabled'}[linesData.isAl || linesData.isCa || linesData.isH]"ng-click='linesData.fetchLines(item, $event)'>Go!</button>
+				<button class="btn dummy-two" ng-class="{true: 'btn-primary', false: 'btn-default disabled'}[linesData.isAl || linesData.isCa || linesData.isH]" ng-click='linesData.fetchLines(item, $event)'>Go!</button>
 			</div>
 
 			
 			<div class="navigation-bar dummy-two" set-class-when-at-top="fix-to-top" padding-when-at-top="55" ng-show='linesData.result != null'> 
 				<ul class="nav navbar-nav">
-				    <li class="active"><a href="#">top navigation</a></li>
-				    <li><a href="#">Page 1</a></li>
-				    <li><a href="#">Page 2</a></li>
-				    <li><a href="#">Page 3</a></li>
+				    <li class='active'><a href="" ng-click="linesData.gotoAnchor('anchor-elements')">Elements</a></li>
+				    <li><a href="" ng-click="linesData.gotoAnchor('anchor-spectra')">Spectra</a></li>	
+				    <li><a href="" ng-click="linesData.gotoAnchor('anchor-lines')">Lines</a></li>
+					<li><a href="" ng-click="linesData.gotoAnchor('anchor-about')">About</a></li>
+					<li><a href="" ng-click="linesData.gotoAnchor('anchor-references')">References</a></li>
 				  </ul>
 			</div>
 			
 
 			<div ng-show = 'linesData.result != null'>
-
+				
+				<div id='anchor-spectra' class='anchor'></div>
 				<div google-chart chart="linesData.linesChart" style={{linesData.linesChart.cssStyle}} id='lines-chart'></div>
 				
+				<div id='anchor-lines' class='anchor'></div>
 				<table id='lines-table' class='table table-striped'>
 					<thead>
 						<tr>
@@ -228,6 +232,16 @@
 		  				</tr>
 		  			</tbody>
 				</table>
+
+
+				<div id="anchor-about" class="anchor">
+  					about section is here blah blah
+				</div>
+
+				<div id="anchor-references" class="anchor">
+  					references section is here link to NIST
+				</div>
+
 			</div>	
 		</div>
 	</body>
