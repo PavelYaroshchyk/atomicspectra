@@ -3,15 +3,24 @@
 	<head>
 		
 		<style type="text/css">
-		.fix-to-top {
+		.fix-to-top-nav {
 		    position: fixed;
 		    top: 0px;
 		    height: 50px;
-		    z-index: 999;
+		    z-index: 998;
 		    width: 100%;
 		    background-color: #F44336;
 		    color: #FFFFFF;
 		}
+
+		.fix-to-top {
+		    position: fixed;
+		    top: 50px;
+		    z-index: 999;
+		    width: 100%;
+		}
+
+
 		.dummy {
 		    height: 40px;
 		    z-index: 999;
@@ -29,6 +38,19 @@
 	</head>
 	<body>
 		<div ng-controller='LinesController'>
+
+			<div class="navigation-bar fix-to-top-nav dummy-two"> 
+				<ul class="nav navbar-nav">
+				    <li class='active'><a href="" ng-click="linesData.gotoAnchor('anchor-elements')">Elements</a></li>
+				    <li><a href="" ng-click="linesData.gotoAnchor('anchor-spectra')">Spectra</a></li>	
+				    <li><a href="" ng-click="linesData.gotoAnchor('anchor-lines')">Lines</a></li>
+					<li><a href="" ng-click="linesData.gotoAnchor('anchor-about')">About</a></li>
+					<li><a href="" ng-click="linesData.gotoAnchor('anchor-references')">References</a></li>
+				  </ul>
+
+				  <br>
+
+			</div>
 
 			<div id='anchor-elements' class='anchor'></div>
 			<div id = 'periodic-table' class='center-block'>
@@ -186,22 +208,10 @@
 				<button class="btn dummy-two" ng-class="{true: 'btn-primary', false: 'btn-default disabled'}[linesData.isAl || linesData.isCa || linesData.isH]" ng-click='linesData.fetchLines(item, $event)'>Go!</button>
 			</div>
 
-			
-			<div class="navigation-bar dummy-two" set-class-when-at-top="fix-to-top" padding-when-at-top="55" ng-show='linesData.result != null'> 
-				<ul class="nav navbar-nav">
-				    <li class='active'><a href="" ng-click="linesData.gotoAnchor('anchor-elements')">Elements</a></li>
-				    <li><a href="" ng-click="linesData.gotoAnchor('anchor-spectra')">Spectra</a></li>	
-				    <li><a href="" ng-click="linesData.gotoAnchor('anchor-lines')">Lines</a></li>
-					<li><a href="" ng-click="linesData.gotoAnchor('anchor-about')">About</a></li>
-					<li><a href="" ng-click="linesData.gotoAnchor('anchor-references')">References</a></li>
-				  </ul>
-			</div>
-			
-
 			<div ng-show = 'linesData.result != null'>
 				
 				<div id='anchor-spectra' class='anchor'></div>
-				<div google-chart chart="linesData.linesChart" style={{linesData.linesChart.cssStyle}} id='lines-chart'></div>
+				<div google-chart chart="linesData.linesChart" style={{linesData.linesChart.cssStyle}} id='lines-chart' set-class-when-at-top="fix-to-top" padding-when-at-top="0"></div>
 				
 				<div id='anchor-lines' class='anchor'></div>
 				<table id='lines-table' class='table table-striped'>
