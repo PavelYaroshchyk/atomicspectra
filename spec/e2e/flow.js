@@ -111,3 +111,35 @@ describe('given arrived at lines page', function(){
 		});
 	});
 });
+
+describe('given arrived at lines page', function(){
+	describe('and selecting a range of wavelength', function(){
+		var linesTable = element(by.css('#lines-table'));
+		var linesChart = element(by.css('#lines-chart'));
+
+		beforeEach(function(){
+			browser.get('/#lines');
+			var aluminiumButton = element(by.buttonText('Al'));
+			var calciumButton = element(by.buttonText('Ca'));
+			var startWl = element(by.model('linesData.startWl'));
+			var endWl = element(by.model('linesData.endWl'));
+ 			
+ 			startWl.clear().sendKeys('400');
+ 			endWl.clear().sendKeys('600');
+
+			aluminiumButton.click();
+			calciumButton.click();
+
+			var goBtn = element(by.buttonText('Go!'));
+			goBtn.click();
+		});
+
+		it('should produce a table with lines and a line chart', function(){
+			expect(linesTable.isPresent()).toBeTruthy();
+		});
+
+		it ('should produce a line chart', function(){
+			expect(linesChart.isPresent()).toBeTruthy();
+		});
+	});
+});

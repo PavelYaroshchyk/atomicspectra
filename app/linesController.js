@@ -8,6 +8,8 @@ angular.module('spectralPlotter')
 	$scope.linesData.elements = [];
 	$scope.linesData.fwhm = 0.5;
 	$scope.linesData.numHorGr = 6;
+	$scope.linesData.startWl = '200';
+	$scope.linesData.endWl = '1000';
 
 	var gatherElements = function(){
 
@@ -24,7 +26,7 @@ angular.module('spectralPlotter')
 		var linesResponses = [];
 
 		for (var i = 0; i < $scope.linesData.elements.length; i++){
-			var dataUrl = serviceUrl + $scope.linesData.elements[i];	
+			var dataUrl = serviceUrl + $scope.linesData.elements[i] + '?wlFrom=' + $scope.linesData.startWl + '&wlTo=' + $scope.linesData.endWl;	
 			linesResponses[i] = $http.get(dataUrl, {cache: true});
 		}
 
