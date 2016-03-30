@@ -12,7 +12,7 @@
 			    top: 0px;
 			    height: 50px;
 			    z-index: 998;
-			    width: 72%;
+			    width: 100%;
 			    background-color: #e0e0e0;
 			}
 
@@ -28,11 +28,16 @@
 			}
 
 			.cent-div { 
-				width: 72%; 
-				overflow: hidden; 
+				width: 90%; 
+				/*overflow: hidden;*/ 
 				text-align: left; 
 				margin-left: auto;
     			margin-right:auto;
+			}
+
+			.vertical-align {
+    			display: flex;
+    			align-items: center;
 			}
 
     	</style>
@@ -42,11 +47,8 @@
 
 	<div ng-controller='LinesController'>
 
-		<div class='cent-div'>
-
-
-			<div class="navigation-bar fix-to-top-nav"> 
-			<!--div class="navigation-bar"--> 
+		<div class="navigation-bar fix-to-top-nav"> 
+			<div class='cent-div'>
 				<ul class="nav navbar-nav">
 				    <li class='active'><a href="" ng-click="linesData.gotoAnchor('anchor-elements')">Elements</a></li>
 				    <li><a href="" ng-click="linesData.gotoAnchor('anchor-spectra')">Spectra</a></li>	
@@ -55,13 +57,13 @@
 					<li><a href="" ng-click="linesData.gotoAnchor('anchor-references')">References</a></li>
 				  </ul>
 			</div>
+		</div>
 
-		
-
+		<div class='cent-div'>
 			<div id='anchor-elements' class='anchor'></div>
 			<div id = 'periodic-table' class='center-block pad-below-navig'>
 
-			
+				
 				<table class='table-condensed table-responsive'> 
 					<tr>
 						<td>
@@ -212,46 +214,33 @@
 						<td><button type="button" class="btn btn-block">Uuo</button></td>
 					</tr>
 				</table>
-
-
-				<div class='text-center' style='margin-top: 100px; margin-bottom: 50px; background-color: yellow; width: 100%'>
-				<form class="form-inline">
-				
-							<div class="form-group ">
-  								<label for="swl">Start WL:</label>
-  								<input type="text" id='swl'ng-model="linesData.startWl" class="form-control" style='width: 60px;'>
-							</div>
-						
-							<div class="form-group">
-  								<label for="ewl">End WL:</label>
-  								<input type="text" id='ewl'ng-model="linesData.endWl" class="form-control small-text-box" style='width: 60px;'>
-							</div>
-						
-							<button class="btn" ng-class="{true: 'btn-primary', false: 'btn-default disabled'}[linesData.isAl || linesData.isCa || linesData.isH]" ng-click='linesData.fetchLines(item, $event)'>Go!</button>
-				</form>
-
-
-				<!--form>                      
-    				<div class="form-group form-inline">                            
-        				<label for="swl">Start WL:</label>
-  						<input type="text" id='swl'ng-model="linesData.startWl" class="form-control">
-    				                          
-        				<label for="ewl">End WL:</label>
-  						<input type="text" id='ewl'ng-model="linesData.endWl" class="form-control">
-    				</div>
-    				<button class="btn" ng-class="{true: 'btn-primary', false: 'btn-default disabled'}[linesData.isAl || linesData.isCa || linesData.isH]" ng-click='linesData.fetchLines(item, $event)'>Go!</button>
-				</form-->
-
-
-
-				</div>
-
-				
-				
-
-			
 			</div>
+		</div>
 
+		<!-- #2aabd2 #e0e0e0-->
+
+		<div style='width:100%; background-color:#7fcee6; height:100px; color:#265a88;'>
+			<div class='cent-div text-center'>
+				<div style='margin-top: 50px; margin-bottom: 50px; padding-top:30px;'>
+					<form class="form-inline">
+					
+						<div class="form-group ">
+								<label for="swl">Start WL:</label>
+								<input type="text" id='swl'ng-model="linesData.startWl" class="form-control" style='width: 60px;'>
+						</div>
+					
+						<div class="form-group">
+								<label for="ewl">End WL:</label>
+								<input type="text" id='ewl'ng-model="linesData.endWl" class="form-control small-text-box" style='width: 60px;'>
+						</div>
+					
+						<button class="btn" ng-class="{true: 'btn-primary', false: 'btn-default disabled'}[linesData.isAl || linesData.isCa || linesData.isH]" ng-click='linesData.fetchLines(item, $event)'>Go!</button>
+					</form>	
+				</div>
+			</div>
+		</div>
+			
+		<div class='cent-div'>
 			<div ng-show = 'linesData.result != null'>
 				
 				<div id='anchor-spectra' class='anchor'></div>

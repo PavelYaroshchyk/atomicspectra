@@ -22,7 +22,8 @@ angular.module('spectralPlotter')
 	$scope.linesData.fetchLines = function(item, event){
 		
 		gatherElements();
-		var serviceUrl = 'http://localhost:8080/atomicspectroscopy/api/data/lines/';
+		//var serviceUrl = 'http://localhost:8080/atomicspectroscopy/api/data/lines/';
+		var serviceUrl = 'http://192.168.1.4:8080/atomicspectroscopy/api/data/lines/';
 		var linesResponses = [];
 
 		for (var i = 0; i < $scope.linesData.elements.length; i++){
