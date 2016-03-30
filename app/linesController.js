@@ -55,7 +55,7 @@ angular.module('spectralPlotter')
     				actions: ['dragToZoom', 'rightClickToReset'] 
 				},
 
-				legend: { position: 'bottom' },
+				//legend: { position: 'bottom' },
 		  
 		        "displayExactValues": true,
 		        "vAxis": {

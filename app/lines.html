@@ -12,34 +12,41 @@
 			    top: 0px;
 			    height: 50px;
 			    z-index: 998;
-			    width: 100%;
+			    width: 72%;
 			    background-color: #e0e0e0;
 			}
 
-			.fix-to-top {
+			/*.fix-to-top {
 			    position: fixed;
 			    top: 50px;
 			    z-index: 999;
 			    width: 100%;
-			}
+			}*/
 
 			.pad-below-navig {
 				padding-top: 100px;
 			}
 
 			.cent-div { 
-				width: 100%; 
+				width: 72%; 
 				overflow: hidden; 
 				text-align: left; 
 				margin-left: auto;
     			margin-right:auto;
 			}
+
     	</style>
 	</head>
 	<body>
-		<div ng-controller='LinesController'>
+	
+
+	<div ng-controller='LinesController'>
+
+		<div class='cent-div'>
+
 
 			<div class="navigation-bar fix-to-top-nav"> 
+			<!--div class="navigation-bar"--> 
 				<ul class="nav navbar-nav">
 				    <li class='active'><a href="" ng-click="linesData.gotoAnchor('anchor-elements')">Elements</a></li>
 				    <li><a href="" ng-click="linesData.gotoAnchor('anchor-spectra')">Spectra</a></li>	
@@ -49,9 +56,13 @@
 				  </ul>
 			</div>
 
+		
+
 			<div id='anchor-elements' class='anchor'></div>
 			<div id = 'periodic-table' class='center-block pad-below-navig'>
-				<table class='table-condensed'> 
+
+			
+				<table class='table-condensed table-responsive'> 
 					<tr>
 						<td>
 							<!--button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isH]" ng-click='linesData.selectH()'>H</button-->
@@ -201,35 +212,44 @@
 						<td><button type="button" class="btn btn-block">Uuo</button></td>
 					</tr>
 				</table>
+
+
+				<div class='text-center' style='margin-top: 100px; margin-bottom: 50px; background-color: yellow; width: 100%'>
 				<form class="form-inline">
-				<table class='table-condensed' style='margin-top: 50px;margin-bottom: 50px;'> 
-					<tr>
-						<td>
-							<div class="form-group">
+				
+							<div class="form-group ">
   								<label for="swl">Start WL:</label>
-  								<input type="text" id='swl'ng-model="linesData.startWl" class="form-control">
+  								<input type="text" id='swl'ng-model="linesData.startWl" class="form-control" style='width: 60px;'>
 							</div>
-						</td>
-						<td>
+						
 							<div class="form-group">
   								<label for="ewl">End WL:</label>
-  								<input type="text" id='ewl'ng-model="linesData.endWl" class="form-control">
+  								<input type="text" id='ewl'ng-model="linesData.endWl" class="form-control small-text-box" style='width: 60px;'>
 							</div>
-						</td>
-
-
-						<!--td>
-							
-  							<input type="text" value="{{linesData.endWl}}" class="form-control">
-							
-						</td-->
-
-						<td>
+						
 							<button class="btn" ng-class="{true: 'btn-primary', false: 'btn-default disabled'}[linesData.isAl || linesData.isCa || linesData.isH]" ng-click='linesData.fetchLines(item, $event)'>Go!</button>
-						</td>
-					</tr>
-				</table>
 				</form>
+
+
+				<!--form>                      
+    				<div class="form-group form-inline">                            
+        				<label for="swl">Start WL:</label>
+  						<input type="text" id='swl'ng-model="linesData.startWl" class="form-control">
+    				                          
+        				<label for="ewl">End WL:</label>
+  						<input type="text" id='ewl'ng-model="linesData.endWl" class="form-control">
+    				</div>
+    				<button class="btn" ng-class="{true: 'btn-primary', false: 'btn-default disabled'}[linesData.isAl || linesData.isCa || linesData.isH]" ng-click='linesData.fetchLines(item, $event)'>Go!</button>
+				</form-->
+
+
+
+				</div>
+
+				
+				
+
+			
 			</div>
 
 			<div ng-show = 'linesData.result != null'>
@@ -240,7 +260,7 @@
 				<div google-chart chart="linesData.linesChart" style={{linesData.linesChart.cssStyle}} id='lines-chart'></div>
 				
 				<div id='anchor-lines' class='anchor'></div>
-				<table id='lines-table' class='table table-striped'>
+				<table id='lines-table' class='table table-striped table-responsive'>
 					<thead>
 						<tr>
 							<td>Element</td>
@@ -280,5 +300,7 @@
 
 			</div>	
 		</div>
+
+	</div>
 	</body>
 </html>
