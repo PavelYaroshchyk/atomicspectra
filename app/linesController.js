@@ -56,6 +56,8 @@ angular.module('spectralPlotter')
     				actions: ['dragToZoom', 'rightClickToReset'] 
 				},
 
+				chartArea : { left: '10%', top: '10%', width: '90%', height: '80%' },
+
 				//legend: { position: 'bottom' },
 		  
 		        "displayExactValues": true,
