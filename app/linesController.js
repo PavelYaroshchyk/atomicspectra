@@ -41,7 +41,7 @@ angular.module('spectralPlotter')
 
 			var chart1 = {};
 		    chart1.type = "LineChart";
-		    chart1.cssStyle = "height:400px;";
+		    chart1.cssStyle = "height:500px;";
 		    chart1.data = {"cols": [
 		        {id: "spec", label: "Spectrum", type: "number"},
 		        {id: "aSpec", label: $scope.linesData.elements.join(', '), type: "number"}], 

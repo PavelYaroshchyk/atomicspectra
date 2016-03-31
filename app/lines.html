@@ -40,11 +40,26 @@
     			align-items: center;
 			}
 
+			.back {
+				background-image: url('../img/paper.png') !important;
+				background-repeat: no-repeat;
+    			background-attachment: fixed;
+    			background-size:cover;
+    			-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;
+
+				width:100%; 
+				height:100px; 
+				color:#265a88;'
+			}
+
+
     	</style>
 	</head>
 	<body>
 	
-
 	<div ng-controller='LinesController'>
 
 		<div class="navigation-bar fix-to-top-nav"> 
@@ -57,9 +72,7 @@
 					<li><a href="" ng-click="linesData.gotoAnchor('anchor-references')">References</a></li>
 				  </ul>
 			</div>
-		</div>
-
-		
+		</div>		
 
 		<div class='cent-div'>
 			<div id='anchor-elements' class='anchor'></div>
@@ -221,7 +234,7 @@
 
 		<!-- #2aabd2 #e0e0e0-->
 
-		<div style='width:100%; background-color:#7fcee6; height:100px; color:#265a88;'>
+		<div class='back'>
 			<div class='cent-div text-center'>
 				<div style='margin-top: 50px; margin-bottom: 50px; padding-top:30px;'>
 					<form class="form-inline">
@@ -242,56 +255,60 @@
 			</div>
 		</div>
 			
-		<div class='cent-div'>
-			<div ng-show = 'linesData.result != null'>
-				
+		
+		<div ng-show = 'linesData.result != null'>
+			
+			<div class='cent-div'>
 				<div id='anchor-spectra' class='anchor'></div>
-				<!--div google-chart chart="linesData.linesChart" style={{linesData.linesChart.cssStyle}} id='lines-chart' set-class-when-at-top="fix-to-top" padding-when-at-top="10"></div-->
-
 				<div google-chart chart="linesData.linesChart" style={{linesData.linesChart.cssStyle}} id='lines-chart'></div>
-				
+			</div>
+
+			<div class='back'>
+			</div>
+
+			<div class='cent-div'>
 				<div id='anchor-lines' class='anchor'></div>
 				<table id='lines-table' class='table table-striped table-responsive'>
-					<thead>
-						<tr>
-							<td>Element</td>
-							<td>Ionisation</td>
-							<td>Wavelength/nm</td>
-							<td>Relative Intensity</td>
-							<td>Aki</td>
-							<td>Ei</td>
-							<td>Ek</td>
-							<td>gi</td>
-							<td>gk</td>
-						</tr>
-					</thead>
-					<tbody>
-	  					<tr ng-repeat="line in linesData.result">
-	  						<td>{{line.elName}}</td>
-	  						<td>{{line.ion}}</td>
-	    					<td>{{line.wl}}</td>
-		    				<td>{{line.relInt}}</td>
-		    				<td>{{line.aki}}</td>
-		    				<td>{{line.ei}}</td>
-		    				<td>{{line.ek}}</td>
-		    				<td>{{line.gi}}</td>
-		    				<td>{{line.gk}}</td>
-		  				</tr>
-		  			</tbody>
+				<thead>
+					<tr>
+						<td>Element</td>
+						<td>Ionisation</td>
+						<td>Wavelength/nm</td>
+						<td>Relative Intensity</td>
+						<td>Aki</td>
+						<td>Ei</td>
+						<td>Ek</td>
+						<td>gi</td>
+						<td>gk</td>
+					</tr>
+				</thead>
+				<tbody>
+  					<tr ng-repeat="line in linesData.result">
+  						<td>{{line.elName}}</td>
+  						<td>{{line.ion}}</td>
+    					<td>{{line.wl}}</td>
+	    				<td>{{line.relInt}}</td>
+	    				<td>{{line.aki}}</td>
+	    				<td>{{line.ei}}</td>
+	    				<td>{{line.ek}}</td>
+	    				<td>{{line.gi}}</td>
+	    				<td>{{line.gk}}</td>
+	  				</tr>
+	  			</tbody>
 				</table>
+			</div>
 
 
-				<div id="anchor-about" class="anchor">
-  					about section is here blah blah
-				</div>
+			<div id="anchor-about" class="anchor">
+					about section is here blah blah
+			</div>
 
-				<div id="anchor-references" class="anchor">
-  					references section is here link to NIST
-				</div>
+			<div id="anchor-references" class="anchor">
+					references section is here link to NIST
+			</div>
 
-			</div>	
-		</div>
-
+		</div>	
 	</div>
+	
 	</body>
 </html>
