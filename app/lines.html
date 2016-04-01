@@ -13,7 +13,8 @@
 			    height: 50px;
 			    z-index: 998;
 			    width: 100%;
-			    background-color: #e0e0e0;
+			    /*background-color: #e0e0e0;*/
+			    background-color: #484A4A;
 			}
 
 			/*.fix-to-top {
@@ -52,8 +53,22 @@
 
 				width:100%; 
 				height:100px; 
-				color:#265a88;'
+				/*color:#265a88;'*/
+				color:#fff
 			}
+
+			.white-font {
+				color:white;
+			}
+
+			.w-textlet {
+				font-weight: bold;
+				color:#fff;
+				margin-left: 20px;
+				margin-right:20px;
+			}
+
+
 
 
     	</style>
@@ -65,11 +80,11 @@
 		<div class="navigation-bar fix-to-top-nav"> 
 			<div class='cent-div'>
 				<ul class="nav navbar-nav">
-				    <li class='active'><a href="" ng-click="linesData.gotoAnchor('anchor-elements')">Elements</a></li>
-				    <li><a href="" ng-click="linesData.gotoAnchor('anchor-spectra')">Spectra</a></li>	
-				    <li><a href="" ng-click="linesData.gotoAnchor('anchor-lines')">Lines</a></li>
-					<li><a href="" ng-click="linesData.gotoAnchor('anchor-about')">About</a></li>
-					<li><a href="" ng-click="linesData.gotoAnchor('anchor-references')">References</a></li>
+				    <li class='active'><a href="" ng-click="linesData.gotoAnchor('anchor-elements')" class='white-font'>Elements</a></li>
+				    <li><a href="" ng-click="linesData.gotoAnchor('anchor-spectra')" class='white-font'>Spectra</a></li>	
+				    <li><a href="" ng-click="linesData.gotoAnchor('anchor-lines')" class='white-font'>Lines</a></li>
+					<li><a href="" ng-click="linesData.gotoAnchor('anchor-about')" class='white-font'>About</a></li>
+					<li><a href="" ng-click="linesData.gotoAnchor('anchor-references')" class='white-font'>References</a></li>
 				  </ul>
 			</div>
 		</div>		
@@ -141,7 +156,8 @@
 						</td>
 						<td><button type="button" class="btn btn-block">Si</button></td>
 						<td><button type="button" class="btn btn-block">P</button></td>
-						<td><button type="button" class="btn btn-block">S</button></td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isS]" ng-click='linesData.isAl = !linesData.isAl'>S</button></td>
 						<td><button type="button" class="btn btn-block">Cl</button></td>
 						<td><button type="button" class="btn btn-block">Ar</button></td>
 					</tr>
@@ -235,23 +251,36 @@
 		<!-- #2aabd2 #e0e0e0-->
 
 		<div class='back'>
-			<div class='cent-div text-center'>
+			<div class='cent-div'>
+
 				<div style='margin-top: 50px; margin-bottom: 50px; padding-top:30px;'>
-					<form class="form-inline">
+
 					
-						<div class="form-group ">
+					<form class="form-inline text-center">
+
+					
+						
+						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">Only with Transition Probabilities</label>
+						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">Observed</label>
+						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">Wavelength in air</label>
+						
+
+												
+						<div class="form-group" style="margin-left: 20px; margin-right:20px;">
 								<label for="swl">Start WL:</label>
 								<input type="text" id='swl'ng-model="linesData.startWl" class="form-control" style='width: 60px;'>
 						</div>
 					
-						<div class="form-group">
+						<div class="form-group" style="margin-left: 20px; margin-right:20px;">
 								<label for="ewl">End WL:</label>
 								<input type="text" id='ewl'ng-model="linesData.endWl" class="form-control small-text-box" style='width: 60px;'>
 						</div>
 					
-						<button class="btn" ng-class="{true: 'btn-primary', false: 'btn-default disabled'}[linesData.isAl || linesData.isCa || linesData.isH]" ng-click='linesData.fetchLines(item, $event)'>Go!</button>
+						<button class="btn" ng-class="{true: 'btn-primary', false: 'btn-default disabled'}[linesData.isAl || linesData.isCa || linesData.isH]" ng-click='linesData.fetchLines(item, $event)' style="margin-left: 20px; margin-right:20px;width:60px;">Go!</button>
 					</form>	
+					
 				</div>
+
 			</div>
 		</div>
 			

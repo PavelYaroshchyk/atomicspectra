@@ -4,6 +4,7 @@ angular.module('spectralPlotter')
 	$scope.linesData.isAl = false;
 	$scope.linesData.isCa = false;
 	$scope.linesData.isH = false;
+	$scope.linesData.isS = false;
 	$scope.linesData.isGo = false;
 	$scope.linesData.elements = [];
 	$scope.linesData.fwhm = 0.5;
@@ -59,6 +60,9 @@ angular.module('spectralPlotter')
 				chartArea : { left: '10%', top: '10%', width: '90%', height: '80%' },
 
 				//legend: { position: 'bottom' },
+				legend: 'none',
+				series: { 0: { color: '#000' }},
+
 		  
 		        "displayExactValues": true,
 		        "vAxis": {
