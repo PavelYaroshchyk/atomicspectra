@@ -5,6 +5,7 @@ angular.module('spectralPlotter')
 	$scope.linesData.isCa = false;
 	$scope.linesData.isH = false;
 	$scope.linesData.isS = false;
+	$scope.linesData.isHe = false;
 	$scope.linesData.isGo = false;
 	$scope.linesData.elements = [];
 	$scope.linesData.fwhm = 0.5;
@@ -18,6 +19,8 @@ angular.module('spectralPlotter')
 		if ($scope.linesData.isAl && $scope.linesData.elements.indexOf('Al') == -1) $scope.linesData.elements.push('Al');
 		if ($scope.linesData.isH &&  $scope.linesData.elements.indexOf('H') == -1)  $scope.linesData.elements.push('H');
 		if ($scope.linesData.isCa && $scope.linesData.elements.indexOf('Ca') == -1) $scope.linesData.elements.push('Ca');
+		if ($scope.linesData.isS && $scope.linesData.elements.indexOf('S') == -1) $scope.linesData.elements.push('S');
+		if ($scope.linesData.isHe && $scope.linesData.elements.indexOf('He') == -1) $scope.linesData.elements.push('He');
 	}
 
 	$scope.linesData.fetchLines = function(item, event){

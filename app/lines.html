@@ -116,7 +116,9 @@
 						<td></td>
 						<td></td>
 						<td></td>
-						<td><button type="button" class="btn btn-block">He</button></td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isHe]" ng-click='linesData.isHe = !linesData.isHe'>He</button>
+						</td>
 					</tr>
 					<tr>
 						<td><button type="button" class="btn btn-block">Li</button></td>
@@ -157,7 +159,7 @@
 						<td><button type="button" class="btn btn-block">Si</button></td>
 						<td><button type="button" class="btn btn-block">P</button></td>
 						<td>
-							<button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isS]" ng-click='linesData.isAl = !linesData.isAl'>S</button></td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isS]" ng-click='linesData.isS = !linesData.isS'>S</button></td>
 						<td><button type="button" class="btn btn-block">Cl</button></td>
 						<td><button type="button" class="btn btn-block">Ar</button></td>
 					</tr>
@@ -259,7 +261,7 @@
 					<form class="form-inline text-center">
 
 					
-						
+						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">I & II</label>
 						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">Only with Transition Probabilities</label>
 						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">Observed</label>
 						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">Wavelength in air</label>
@@ -276,7 +278,7 @@
 								<input type="text" id='ewl'ng-model="linesData.endWl" class="form-control small-text-box" style='width: 60px;'>
 						</div>
 					
-						<button class="btn" ng-class="{true: 'btn-primary', false: 'btn-default disabled'}[linesData.isAl || linesData.isCa || linesData.isH]" ng-click='linesData.fetchLines(item, $event)' style="margin-left: 20px; margin-right:20px;width:60px;">Go!</button>
+						<button class="btn" ng-class="{true: 'btn-primary', false: 'btn-default disabled'}[linesData.isAl || linesData.isCa || linesData.isH || linesData.isHe || linesData.isS]" ng-click='linesData.fetchLines(item, $event)' style="margin-left: 20px; margin-right:20px;width:100px;">Go!</button>
 					</form>	
 					
 				</div>
@@ -328,14 +330,23 @@
 			</div>
 
 
-			<div id="anchor-about" class="anchor">
-					about section is here blah blah
+			<div id="anchor-about" class="anchor"></div>
+			<div class='back'>
+				<div class='cent-div'>
+					<div style='margin-top: 50px; margin-bottom: 50px; padding-top:30px;' class='w-textlet'>
+						This is a beta version of spectraGo, please keep coming back to find more features implemented.  Willing to contribute? Link to github here... 
+					</div>
+				</div>
 			</div>
 
-			<div id="anchor-references" class="anchor">
-					references section is here link to NIST
+			<div id="anchor-references" class="anchor"></div>
+			<div class='back'>
+				<div class='cent-div'>
+					<div style='margin-top: 50px; margin-bottom: 50px; padding-top:30px;' class='w-textlet'>
+						1. Kramida, A., Ralchenko, Yu., Reader, J., and NIST ASD Team (2015). NIST Atomic Spectra Database (ver. 5.3), [Online]. Available: http://physics.nist.gov/asd [2016, April 1]. National Institute of Standards and Technology, Gaithersburg, MD. 
+					</div>
+				</div>
 			</div>
-
 		</div>	
 	</div>
 	
