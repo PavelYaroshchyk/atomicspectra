@@ -44,19 +44,16 @@ var getSpectrum = function(data, fwhm){
 	
 	angular.forEach(data, function(value, key){
 		var relIntDig = value.relInt.replace(/[^\d\.]/, '');
+
 		if (!isNaN(relIntDig) && !isNaN(value.wl)){
 			var line = gauss(value.wl, relIntDig, fwhm);
 			var lineStart = line[0].wl.toFixed(3);
 			var startPix = wlLookupMap.indexOf(lineStart);
+
 			for (var i = 0; i < line.length; i++){
-
-
-				if (spectrum[startPix + i].inten){ 
-
-
-
-					spectrum[startPix + i].inten += line[i].inten;
-				}
+				if ((startPix + i) < spectrum.length) {
+					spectrum[startPix + i].inten += line[i].inten;	
+				}	
 			}
 		}	
 	});
