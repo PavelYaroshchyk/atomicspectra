@@ -49,7 +49,14 @@ var getSpectrum = function(data, fwhm){
 			var lineStart = line[0].wl.toFixed(3);
 			var startPix = wlLookupMap.indexOf(lineStart);
 			for (var i = 0; i < line.length; i++){
-				spectrum[startPix + i].inten += line[i].inten;
+
+
+				if (spectrum[startPix + i].inten){ 
+
+
+
+					spectrum[startPix + i].inten += line[i].inten;
+				}
 			}
 		}	
 	});

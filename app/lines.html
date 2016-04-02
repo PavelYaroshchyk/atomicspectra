@@ -59,14 +59,25 @@
 
 			.white-font {
 				color:white;
+				font-weight: bold;
+			}
+
+			.b-or-font-imp {
+				color: #FF851B !important;
+				font-weight: bold;
 			}
 
 			.w-textlet {
 				font-weight: bold;
-				color:#fff;
+				/*color:#fff;*/
+				color:#FF851B;
 				margin-left: 20px;
 				margin-right:20px;
 			}
+
+			/*.btn-info{
+				background-color: #ff851b;
+			}*/
 
 
 
@@ -80,11 +91,11 @@
 		<div class="navigation-bar fix-to-top-nav"> 
 			<div class='cent-div'>
 				<ul class="nav navbar-nav">
-				    <li class='active'><a href="" ng-click="linesData.gotoAnchor('anchor-elements')" class='white-font'>Elements</a></li>
-				    <li><a href="" ng-click="linesData.gotoAnchor('anchor-spectra')" class='white-font'>Spectra</a></li>	
-				    <li><a href="" ng-click="linesData.gotoAnchor('anchor-lines')" class='white-font'>Lines</a></li>
-					<li><a href="" ng-click="linesData.gotoAnchor('anchor-about')" class='white-font'>About</a></li>
-					<li><a href="" ng-click="linesData.gotoAnchor('anchor-references')" class='white-font'>References</a></li>
+				    <li class='active'><a href="" ng-click="linesData.gotoAnchor('anchor-elements')" class='b-or-font-imp'>Elements</a></li>
+				    <li><a href="" ng-click="linesData.gotoAnchor('anchor-spectra')" class='b-or-font-imp'>Spectra</a></li>	
+				    <li><a href="" ng-click="linesData.gotoAnchor('anchor-lines')" class='b-or-font-imp'>Lines</a></li>
+					<li><a href="" ng-click="linesData.gotoAnchor('anchor-about')" class='b-or-font-imp'>About</a></li>
+					<li><a href="" ng-click="linesData.gotoAnchor('anchor-references')" class='b-or-font-imp'>References</a></li>
 				  </ul>
 			</div>
 		</div>		
@@ -98,7 +109,7 @@
 					<tr>
 						<td>
 							<!--button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isH]" ng-click='linesData.selectH()'>H</button-->
-							<button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isH]" ng-click='linesData.isH = !linesData.isH'>H</button>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isH]" ng-click='linesData.isH = !linesData.isH'>H</button>
 						</td>
 						<td></td>
 						<td></td>
@@ -117,32 +128,16 @@
 						<td></td>
 						<td></td>
 						<td>
-							<button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isHe]" ng-click='linesData.isHe = !linesData.isHe'>He</button>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isHe]" ng-click='linesData.isHe = !linesData.isHe'>He</button>
 						</td>
 					</tr>
 					<tr>
-						<td><button type="button" class="btn btn-block">Li</button></td>
-						<td><button type="button" class="btn btn-block">Be</button></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td><button type="button" class="btn btn-block">B</button></td>
-						<td><button type="button" class="btn btn-block">C</button></td>
-						<td><button type="button" class="btn btn-block">N</button></td>
-						<td><button type="button" class="btn btn-block">O</button></td>
-						<td><button type="button" class="btn btn-block">F</button></td>
-						<td><button type="button" class="btn btn-block">Ne</button></td>
-					</tr>
-					<tr>
-						<td><button type="button" class="btn btn-block">Na</button></td>
-						<td><button type="button" class="btn btn-block">Mg</button></td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isLi]" ng-click='linesData.isLi = !linesData.isLi'>Li</button>
+						</td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isBe]" ng-click='linesData.isBe = !linesData.isBe'>Be</button>
+						</td>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -154,20 +149,66 @@
 						<td></td>
 						<td></td>
 						<td>
-							<button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isAl]" ng-click='linesData.isAl = !linesData.isAl'>Al</button>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isB]" ng-click='linesData.isB = !linesData.isB'>B</button>
 						</td>
-						<td><button type="button" class="btn btn-block">Si</button></td>
-						<td><button type="button" class="btn btn-block">P</button></td>
 						<td>
-							<button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isS]" ng-click='linesData.isS = !linesData.isS'>S</button></td>
-						<td><button type="button" class="btn btn-block">Cl</button></td>
-						<td><button type="button" class="btn btn-block">Ar</button></td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isC]" ng-click='linesData.isC = !linesData.isC'>C</button>
+						</td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isN]" ng-click='linesData.isN = !linesData.isN'>N</button>
+						</td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isO]" ng-click='linesData.isO = !linesData.isO'>O</button>
+						</td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isF]" ng-click='linesData.isF = !linesData.isF'>F</button>
+						</td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isNe]" ng-click='linesData.isNe = !linesData.isNe'>Ne</button>
+						</td>
 					</tr>
 					<tr>
-						<td><button type="button" class="btn btn-block">K</button></td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isNa]" ng-click='linesData.isNa = !linesData.isNa'>Na</button>
+						</td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isMg]" ng-click='linesData.isMg = !linesData.isMg'>Mg</button>
+						</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isAl]" ng-click='linesData.isAl = !linesData.isAl'>Al</button>
+						</td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isSi]" ng-click='linesData.isSi = !linesData.isSi'>Si</button>
+						</td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isP]" ng-click='linesData.isP = !linesData.isP'>P</button>
+						</td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isS]" ng-click='linesData.isS = !linesData.isS'>S</button></td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isCl]" ng-click='linesData.isCl = !linesData.isCl'>Cl</button>
+						</td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isAr]" ng-click='linesData.isAr = !linesData.isAr'>Ar</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isK]" ng-click='linesData.isK = !linesData.isK'>K</button>
+						</td>
 						<td>
 							<!--button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isCa]" ng-click='linesData.selectCa()'>Ca</button-->
-							<button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isCa]" ng-click='linesData.isCa = !linesData.isCa'>Ca</button>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isCa]" ng-click='linesData.isCa = !linesData.isCa'>Ca</button>
 						</td>
 						<td><button type="button" class="btn btn-block">Sc</button></td>
 						<td><button type="button" class="btn btn-block">Ti</button></td>
@@ -268,17 +309,17 @@
 						
 
 												
-						<div class="form-group" style="margin-left: 20px; margin-right:20px;">
-								<label for="swl">Start WL:</label>
-								<input type="text" id='swl'ng-model="linesData.startWl" class="form-control" style='width: 60px;'>
+						<div class="form-group b-or-font-imp" style="margin-left: 20px; margin-right:20px;">
+								<label for="swl">Start WL:&nbsp;</label>
+								<input type="text" id='swl'ng-model="linesData.startWl" class="form-control" style='width: 60px; font-weight:normal;'>
 						</div>
 					
-						<div class="form-group" style="margin-left: 20px; margin-right:20px;">
-								<label for="ewl">End WL:</label>
-								<input type="text" id='ewl'ng-model="linesData.endWl" class="form-control small-text-box" style='width: 60px;'>
+						<div class="form-group b-or-font-imp" style="margin-left: 20px; margin-right:20px;">
+								<label for="ewl">End WL:&nbsp;</label>
+								<input type="text" id='ewl'ng-model="linesData.endWl" class="form-control small-text-box" style='width: 60px; font-weight:normal;'>
 						</div>
 					
-						<button class="btn" ng-class="{true: 'btn-primary', false: 'btn-default disabled'}[linesData.isAl || linesData.isCa || linesData.isH || linesData.isHe || linesData.isS]" ng-click='linesData.fetchLines(item, $event)' style="margin-left: 20px; margin-right:20px;width:100px;">Go!</button>
+						<button class="btn" ng-class="{true: 'btn-warning', false: 'btn-default disabled'}[linesData.isH || linesData.isHe || linesData.isLi || linesData.isBe || linesData.isB || linesData.isC || linesData.isN || linesData.isO || linesData.isF || linesData.isNe || linesData.isNa || linesData.isMg || linesData.isAl || linesData.isSi || linesData.isP || linesData.isS || linesData.isCl || linesData.isAr || linesData.isK || linesData.isCa]" ng-click='linesData.fetchLines(item, $event)' style="margin-left: 20px; margin-right:20px;width:100px;">Go!</button>
 					</form>	
 					
 				</div>
