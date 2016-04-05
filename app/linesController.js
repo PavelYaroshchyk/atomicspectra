@@ -111,6 +111,10 @@ angular.module('spectralPlotter')
 
 		    chart1.formatters = {};
 		    $scope.linesData.linesChart = chart1;	
+		}, function (reason){
+			var str = JSON.stringify(reason, null, 4);
+			console.log('request failed: ' + str);
+			console.log('HTTP error code: ' + reason.status);
 		});
 	}
 
