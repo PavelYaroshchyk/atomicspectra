@@ -14,7 +14,11 @@
 			    height: 50px;
 			    z-index: 998;
 			    width: 100%;
-			    background-color: #484A4A;
+			    background-color: #000;//#484A4A;
+			}
+
+			.btn-warning {
+				background-color: #FF851B ;
 			}
 
 			/*.fix-to-top {
@@ -42,7 +46,7 @@
 			}
 
 			.back {
-				background-image: url('../img/paper.png') !important;
+				background-image: url('../img/paper.jpg') !important;
 				background-repeat: no-repeat;
     			background-attachment: fixed;
     			background-size:cover;
@@ -76,7 +80,6 @@
 
 			.p0 {
 			    
-			    
 			    white-space: nowrap !important;
 			}
 
@@ -84,8 +87,9 @@
 			    display:inline-block !important;
 			}
 
-
-
+			.btn-default {
+				color:#FF851B;
+			}
 
     	</style>
 	</head>
@@ -301,19 +305,16 @@
 		<div class='back'>
 			<div class='cent-div'>
 
-				<div style='margin-top: 50px; margin-bottom: 50px; padding-top:30px;width:100%;white-space: nowrap:!important'>
 
+				<div style='margin-top: 50px; margin-bottom: 50px; padding-top:30px;width:100%;white-space: nowrap:!important'>
 					
 					<form class="form-inline text-center">
 					
-										
 						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">I & II</label>
 						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">Only with Transition Probabilities</label>
 						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">Observed</label>
 						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">Wavelength in air</label>
-						
-						
-												
+													
 						<div class="form-group b-or-font-imp" style="margin-left:10px; margin-right:10px;display:inline-block;">
 								<label for="swl">Start WL:&nbsp;</label>
 								<input type="text" id='swl'ng-model="linesData.startWl" class="form-control" style='width: 60px; font-weight:normal;'>
@@ -327,10 +328,9 @@
 						<button class="btn" ng-class="{true: 'btn-warning', false: 'btn-default disabled'}[linesData.isH || linesData.isHe || linesData.isLi || linesData.isBe || linesData.isB || linesData.isC || linesData.isN || linesData.isO || linesData.isF || linesData.isNe || linesData.isNa || linesData.isMg || linesData.isAl || linesData.isSi || linesData.isP || linesData.isS || linesData.isCl || linesData.isAr || linesData.isK || linesData.isCa]" ng-click='linesData.fetchLines(item, $event)' style="margin-left: 20px; margin-right:20px;width:100px;display:inline-block;">Go!</button>
 
 					</form>	
-					
+
 					
 				</div>
-
 			</div>
 		</div>
 			
@@ -343,6 +343,11 @@
 			</div>
 
 			<div class='back'>
+				<div class='cent-div'>
+					<div style='margin-top: 50px; margin-bottom: 50px; padding-top:30px;' class='w-textlet'>
+						Hover over spectrum to inensity values. Click and hold left mouse button to select a rectangle to zoom in. Right mouse button click to zoom out.  
+					</div>
+				</div>
 			</div>
 
 			<div class='cent-div'>
@@ -382,7 +387,7 @@
 			<div class='back'>
 				<div class='cent-div'>
 					<div style='margin-top: 50px; margin-bottom: 50px; padding-top:30px;' class='w-textlet'>
-						This is a beta version of spectraGo, please keep coming back to find more features implemented.  Willing to contribute? Link to github here... 
+						This is a beta version of Atomic Spectra.  This project is a work in progress, so keep coming back to find more features implemented. Willing to contribure? Find us on <a href=''>GitHub</a>.
 					</div>
 				</div>
 			</div>
