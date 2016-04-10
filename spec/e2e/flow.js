@@ -143,3 +143,151 @@ describe('given arrived at lines page', function(){
 		});
 	});
 });
+
+describe('given arrived at lines page', function(){
+	describe('and selecting wrong range of wavelength', function(){
+		var linesTable = element(by.css('#lines-table'));
+		var linesChart = element(by.css('#lines-chart'));
+		var warningDiv = element(by.css('.alert-warning'));
+
+		beforeEach(function(){
+			browser.get('/#lines');
+			var aluminiumButton = element(by.buttonText('Al'));
+			var calciumButton = element(by.buttonText('Ca'));
+			var startWl = element(by.model('linesData.startWl'));
+			var endWl = element(by.model('linesData.endWl'));
+ 			
+ 			startWl.clear().sendKeys('40a');
+ 			endWl.clear().sendKeys('600');
+
+			aluminiumButton.click();
+			calciumButton.click();
+
+			var goBtn = element(by.buttonText('Go!'));
+			goBtn.click();
+		});
+
+		it('should NOT produce a table with lines and a line chart', function(){
+			expect(linesTable.isPresent()).toBeTruthy();
+		});
+
+		it ('should NOT produce a line chart', function(){
+			expect(linesChart.isPresent()).toBeTruthy();
+		});
+
+		it ('should produce a warning', function(){
+			expect(warningDiv.isPresent()).toBeTruthy();
+		});
+	});
+});
+
+describe('given arrived at lines page', function(){
+	describe('and selecting wrong range of wavelength', function(){
+		var linesTable = element(by.css('#lines-table'));
+		var linesChart = element(by.css('#lines-chart'));
+		var warningDiv = element(by.css('.alert-warning'));
+
+		beforeEach(function(){
+			browser.get('/#lines');
+			var aluminiumButton = element(by.buttonText('Al'));
+			var calciumButton = element(by.buttonText('Ca'));
+			var startWl = element(by.model('linesData.startWl'));
+			var endWl = element(by.model('linesData.endWl'));
+ 			
+ 			startWl.clear().sendKeys('900');
+ 			endWl.clear().sendKeys('600');
+
+			aluminiumButton.click();
+			calciumButton.click();
+
+			var goBtn = element(by.buttonText('Go!'));
+			goBtn.click();
+		});
+
+		it('should NOT produce a table with lines and a line chart', function(){
+			expect(linesTable.isPresent()).toBeTruthy();
+		});
+
+		it ('should NOT produce a line chart', function(){
+			expect(linesChart.isPresent()).toBeTruthy();
+		});
+
+		it ('should produce a warning', function(){
+			expect(warningDiv.isPresent()).toBeTruthy();
+		});
+	});
+});
+
+describe('given arrived at lines page', function(){
+	describe('and selecting wrong range of wavelength', function(){
+		var linesTable = element(by.css('#lines-table'));
+		var linesChart = element(by.css('#lines-chart'));
+		var warningDiv = element(by.css('.alert-warning'));
+
+		beforeEach(function(){
+			browser.get('/#lines');
+			var aluminiumButton = element(by.buttonText('Al'));
+			var calciumButton = element(by.buttonText('Ca'));
+			var startWl = element(by.model('linesData.startWl'));
+			var endWl = element(by.model('linesData.endWl'));
+ 			
+ 			startWl.clear().sendKeys('199');
+ 			endWl.clear().sendKeys('1000');
+
+			aluminiumButton.click();
+			calciumButton.click();
+
+			var goBtn = element(by.buttonText('Go!'));
+			goBtn.click();
+		});
+
+		it('should NOT produce a table with lines and a line chart', function(){
+			expect(linesTable.isPresent()).toBeTruthy();
+		});
+
+		it ('should NOT produce a line chart', function(){
+			expect(linesChart.isPresent()).toBeTruthy();
+		});
+
+		it ('should produce a warning', function(){
+			expect(warningDiv.isPresent()).toBeTruthy();
+		});
+	});
+});
+
+describe('given arrived at lines page', function(){
+	describe('and selecting wrong range of wavelength', function(){
+		var linesTable = element(by.css('#lines-table'));
+		var linesChart = element(by.css('#lines-chart'));
+		var warningDiv = element(by.css('.alert-warning'));
+
+		beforeEach(function(){
+			browser.get('/#lines');
+			var aluminiumButton = element(by.buttonText('Al'));
+			var calciumButton = element(by.buttonText('Ca'));
+			var startWl = element(by.model('linesData.startWl'));
+			var endWl = element(by.model('linesData.endWl'));
+ 			
+ 			startWl.clear().sendKeys('200');
+ 			endWl.clear().sendKeys('1001');
+
+			aluminiumButton.click();
+			calciumButton.click();
+
+			var goBtn = element(by.buttonText('Go!'));
+			goBtn.click();
+		});
+
+		it('should NOT produce a table with lines and a line chart', function(){
+			expect(linesTable.isPresent()).toBeTruthy();
+		});
+
+		it ('should NOT produce a line chart', function(){
+			expect(linesChart.isPresent()).toBeTruthy();
+		});
+
+		it ('should produce a warning', function(){
+			expect(warningDiv.isPresent()).toBeTruthy();
+		});
+	});
+});
