@@ -5,7 +5,8 @@
 			html,body {
    				width:100%;
     			height:100%;
-    			min-width:1280px;
+    			min-width:1000px;
+    			//background-color: #FF851B;
 			}
 
 			.fix-to-top-nav {
@@ -89,6 +90,17 @@
 
 			.btn-default {
 				color:#FF851B;
+			}
+
+			.info-bit {
+				margin-top: 50px; 
+				margin-bottom: 50px; 
+				padding-top:30px;
+				width:100%;
+			}
+
+			.btn-off {
+				pointer-events: none;
 			}
 
     	</style>
@@ -306,14 +318,14 @@
 			<div class='cent-div'>
 
 
-				<div style='margin-top: 50px; margin-bottom: 50px; padding-top:30px;width:100%;white-space: nowrap:!important'>
+				<div class='info-bit' style='white-space: nowrap:!important'>
 					
 					<form class="form-inline text-center">
 					
 						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">I & II</label>
-						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">Only with Transition Probabilities</label>
-						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">Observed</label>
-						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">Wavelength in air</label>
+						<!--label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">With Transition Probabilities</label-->
+						<!--label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">Observed</label-->
+						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">Observed WL in air</label>
 													
 						<div class="form-group b-or-font-imp" style="margin-left:10px; margin-right:10px;display:inline-block;">
 								<label for="swl">Start WL:&nbsp;</label>
@@ -325,17 +337,25 @@
 								<input type="text" id='ewl'ng-model="linesData.endWl" class="form-control small-text-box" style='width: 60px; font-weight:normal;'>
 						</div>
 					
-						<button class="btn" ng-class="{true: 'btn-warning', false: 'btn-default disabled'}[linesData.isH || linesData.isHe || linesData.isLi || linesData.isBe || linesData.isB || linesData.isC || linesData.isN || linesData.isO || linesData.isF || linesData.isNe || linesData.isNa || linesData.isMg || linesData.isAl || linesData.isSi || linesData.isP || linesData.isS || linesData.isCl || linesData.isAr || linesData.isK || linesData.isCa]" ng-click='linesData.fetchLines(item, $event)' style="margin-left: 20px; margin-right:20px;width:100px;display:inline-block;">Go!</button>
-
+						<button class="btn" ng-class="{true: 'btn-warning', false: 'btn-default btn-off disabled'}[linesData.isH || linesData.isHe || linesData.isLi || linesData.isBe || linesData.isB || linesData.isC || linesData.isN || linesData.isO || linesData.isF || linesData.isNe || linesData.isNa || linesData.isMg || linesData.isAl || linesData.isSi || linesData.isP || linesData.isS || linesData.isCl || linesData.isAr || linesData.isK || linesData.isCa]" ng-click='linesData.fetchLines(item, $event)' style="margin-left: 20px; margin-right:20px;width:100px;display:inline-block;">Go!</button>
 					</form>	
-
-					
 				</div>
 			</div>
 		</div>
-			
 		
-		<div ng-show = 'linesData.result != null'>
+		<div ng-show = 'linesData.error.flag == true'>
+			<div class="alert alert-danger" style='text-align: center;'>
+				Oops! Something is not right... <strong> Error: Status: {{linesData.error.status}} Description: {{linesData.error.statusText}}</strong>
+  			</div>
+		</div>	
+
+		<div ng-show = 'linesData.warning.flag == true'>
+			<div class="alert alert-warning" style='text-align: center;'>
+				Please check your input: <strong> {{linesData.warning.info}}</strong>
+  			</div>
+		</div>	
+		
+		<div ng-show = 'linesData.result != null && linesData.error.flag != true && linesData.result.size != 0 && linesData.warning.flag != true'>
 			
 			<div class='cent-div'>
 				<div id='anchor-spectra' class='anchor'></div>
@@ -344,8 +364,8 @@
 
 			<div class='back'>
 				<div class='cent-div'>
-					<div style='margin-top: 50px; margin-bottom: 50px; padding-top:30px;' class='w-textlet'>
-						Hover over spectrum to inensity values. Click and hold left mouse button to select a rectangle to zoom in. Right mouse button click to zoom out.  
+					<div class='info-bit w-textlet'>
+						Lines are drawn using Gaussian profiles with pixel size set to 0.1 nm.  Hover over spectrum to see inensity values. Click and hold left mouse button to select a rectangle to zoom in. Right mouse button click to zoom out.  
 					</div>
 				</div>
 			</div>
@@ -386,8 +406,8 @@
 			<div id="anchor-about" class="anchor"></div>
 			<div class='back'>
 				<div class='cent-div'>
-					<div style='margin-top: 50px; margin-bottom: 50px; padding-top:30px;' class='w-textlet'>
-						This is a beta version of Atomic Spectra.  This project is a work in progress, so keep coming back to find more features implemented. Willing to contribure? Find us on <a href=''>GitHub</a>.
+					<div class='info-bit w-textlet'>
+						This is a beta version of Atomic Spectra.  This project is a work in progress, so keep coming back to find more features implemented. Willing to contribure? Have suggestions? Want to report errors? We are on <a href=''>GitHub</a>.
 					</div>
 				</div>
 			</div>
@@ -395,7 +415,7 @@
 			<div id="anchor-references" class="anchor"></div>
 			<div class='back'>
 				<div class='cent-div'>
-					<div style='margin-top: 50px; margin-bottom: 50px; padding-top:30px;' class='w-textlet'>
+					<div class='info-bit w-textlet'>
 						1. Kramida, A., Ralchenko, Yu., Reader, J., and NIST ASD Team (2015). NIST Atomic Spectra Database (ver. 5.3), [Online]. Available: http://physics.nist.gov/asd [2016, April 1]. National Institute of Standards and Technology, Gaithersburg, MD. 
 					</div>
 				</div>

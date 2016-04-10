@@ -1,6 +1,10 @@
 angular.module('spectralPlotter')
 .controller('LinesController',['$scope', '$http', '$q', '$anchorScroll', '$location', function($scope, $http, $q, $anchorScroll, $location){
 	$scope.linesData = {};
+	$scope.linesData.error = {};
+	$scope.linesData.warning = {};
+	$scope.linesData.error.flag = false;
+	$scope.linesData.warning.flag = false;
 	
 	$scope.linesData.isH = false;
 	$scope.linesData.isHe = false;
@@ -56,66 +60,96 @@ angular.module('spectralPlotter')
 		if ($scope.linesData.isCa && $scope.linesData.elements.indexOf('Ca') == -1) $scope.linesData.elements.push('Ca');		
 	}
 
-	$scope.linesData.fetchLines = function(item, event){
-		
-		gatherElements();
-		//var serviceUrl = 'http://localhost:8080/atomicspectroscopy/api/data/lines/';
-		var serviceUrl = 'http://192.168.1.4:8080/atomicspectroscopy/api/data/lines/';
-		var linesResponses = [];
 
-		for (var i = 0; i < $scope.linesData.elements.length; i++){
-			var dataUrl = serviceUrl + $scope.linesData.elements[i] + '?wlFrom=' + $scope.linesData.startWl + '&wlTo=' + $scope.linesData.endWl;	
-			linesResponses[i] = $http.get(dataUrl, {cache: true});
+	$scope.linesData.fetchLines = function(item, event){
+		$scope.linesData.error.flag=false;
+		$scope.linesData.warning.flag=false;
+		if (isNaN($scope.linesData.startWl) || isNaN($scope.linesData.endWl)){
+			$scope.linesData.warning.flag = true;
+			if (isNaN($scope.linesData.startWl)){
+				$scope.linesData.warning.info = 'Start wavelength must be a number!';
+			} else {
+				$scope.linesData.warning.info = 'End wavelength must be a number!';
+			}
+
+		} else if (parseFloat($scope.linesData.startWl) >= parseFloat($scope.linesData.endWl)){
+			$scope.linesData.warning.flag = true;
+			$scope.linesData.warning.info = 'End wavelength must be greater than start wavelength!';
+
+		} else if (parseFloat($scope.linesData.startWl) < 200){
+			$scope.linesData.warning.flag = true;
+			$scope.linesData.warning.info = 'Start wavelength must be greater than 200 nm!';
+
+		} else if (parseFloat($scope.linesData.endWl) > 1000){
+			$scope.linesData.warning.flag = true;
+			$scope.linesData.warning.info = 'End wavelength must be less than 1000 nm!';
+
+		} else {
+			gatherElements();
+			//var serviceUrl = 'http://localhost:8080/atomicspectroscopy/api/data/lines/';
+			var serviceUrl = 'http://192.168.1.4:8080/atomicspectroscopy/api/data/lines/';
+			var linesResponses = [];
+
+			for (var i = 0; i < $scope.linesData.elements.length; i++){
+				var dataUrl = serviceUrl + $scope.linesData.elements[i] + '?wlFrom=' + $scope.linesData.startWl + '&wlTo=' + $scope.linesData.endWl;	
+				linesResponses[i] = $http.get(dataUrl, {cache: true});
+			}
+
+			$q.all(linesResponses).then(function(values) {
+
+				var data = [];
+				angular.forEach(values, function(value, key){
+					data = data.concat(value.data);
+				});
+				$scope.linesData.result = data;
+
+				var chart1 = {};
+			    chart1.type = "LineChart";
+			    chart1.cssStyle = "height:500px;";
+			    chart1.data = {"cols": [
+			        {id: "spec", label: "Spectrum", type: "number"},
+			        {id: "aSpec", label: $scope.linesData.elements.join(', '), type: "number"}], 
+			        "rows": getFormattedSpectrum(data, $scope.linesData.fwhm)
+				};
+
+			    chart1.options = {
+
+			    	explorer: {
+	    				//maxZoomIn:0.1,
+	    				keepInBounds: true,
+	    				actions: ['dragToZoom', 'rightClickToReset'] 
+					},
+
+					chartArea : { left: '10%', top: '10%', width: '90%', height: '80%' },
+
+					//legend: { position: 'bottom' },
+					legend: 'none',
+					series: { 0: { color: '#000' }},
+
+			  
+			        "displayExactValues": true,
+			        "vAxis": {
+			            "title": "Intensity/a.u."//, "gridlines": {"count": $scope.linesData.numHorGr}
+			        },
+			        "hAxis": {
+			            "title": "Wavelength/nm"
+			        }
+			    };
+
+			    chart1.formatters = {};
+			    $scope.linesData.linesChart = chart1;	
+			}, function (reason){
+				var str = JSON.stringify(reason, null, 4);
+				console.log('request failed: ' + str);
+				console.log('HTTP error code: ' + reason.status);
+				$scope.linesData.error.flag=true;
+				$scope.linesData.error.status=reason.status;
+				$scope.linesData.error.statusText=reason.statusText;
+			});
+
 		}
 
-		$q.all(linesResponses).then(function(values) {
-
-			var data = [];
-			angular.forEach(values, function(value, key){
-				data = data.concat(value.data);
-			});
-			$scope.linesData.result = data;
-
-			var chart1 = {};
-		    chart1.type = "LineChart";
-		    chart1.cssStyle = "height:500px;";
-		    chart1.data = {"cols": [
-		        {id: "spec", label: "Spectrum", type: "number"},
-		        {id: "aSpec", label: $scope.linesData.elements.join(', '), type: "number"}], 
-		        "rows": getFormattedSpectrum(data, $scope.linesData.fwhm)
-			};
-
-		    chart1.options = {
-
-		    	explorer: {
-    				//maxZoomIn:0.1,
-    				keepInBounds: true,
-    				actions: ['dragToZoom', 'rightClickToReset'] 
-				},
-
-				chartArea : { left: '10%', top: '10%', width: '90%', height: '80%' },
-
-				//legend: { position: 'bottom' },
-				legend: 'none',
-				series: { 0: { color: '#000' }},
-
-		  
-		        "displayExactValues": true,
-		        "vAxis": {
-		            "title": "Intensity/a.u."//, "gridlines": {"count": $scope.linesData.numHorGr}
-		        },
-		        "hAxis": {
-		            "title": "Wavelength/nm"
-		        }
-		    };
-
-		    chart1.formatters = {};
-		    $scope.linesData.linesChart = chart1;	
-		}, function (reason){
-			var str = JSON.stringify(reason, null, 4);
-			console.log('request failed: ' + str);
-			console.log('HTTP error code: ' + reason.status);
-		});
+		
 	}
 
 	$scope.linesData.gotoAnchor = function(x) {
