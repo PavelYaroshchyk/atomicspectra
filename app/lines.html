@@ -7,6 +7,7 @@
     			height:100%;
     			min-width:1280px;
     			//background-color: #FF851B;
+
 			}
 
 			.fix-to-top-nav {
@@ -47,7 +48,8 @@
 			}
 
 			.back {
-				background-image: url('../img/paper.jpg') !important;
+				//background-image: url('../img/paper.jpg') !important;
+				background-color: #e6e6e6;
 				background-repeat: no-repeat;
     			background-attachment: fixed;
     			background-size:cover;
@@ -56,8 +58,8 @@
 				-o-background-size: cover;
 			
 				width:100% !important; 
-				height:100px; 
-				/*color:#265a88;'*/
+				padding-top: 20px;
+				padding-bottom: 20px;
 				color:#fff
 			}
 
@@ -73,7 +75,7 @@
 
 			.w-textlet {
 				font-weight: bold;
-				/*color:#fff;*/
+				//color:#000;
 				color:#FF851B;
 				margin-left: 10px;
 				margin-right:10px;
@@ -93,14 +95,24 @@
 			}
 
 			.info-bit {
-				margin-top: 50px; 
-				margin-bottom: 50px; 
-				padding-top:30px;
+				margin-top: 10px; 
+				margin-bottom: 10px; 
+				//padding-top:30px;
 				width:100%;
 			}
 
 			.btn-off {
 				pointer-events: none;
+			}
+
+			.inline-input {
+				margin-left:10px; 
+				margin-right:10px;
+				display: inline-block
+			}
+
+			.narrower-table-important {
+				min-width: 900px !important;
 			}
 
     	</style>
@@ -116,14 +128,14 @@
 				    <li class='c0'> <a href="" ng-click="linesData.gotoAnchor('anchor-spectra')" class='b-or-font-imp'>Spectra</a></li>	
 				    <li class='c0'><a href="" ng-click="linesData.gotoAnchor('anchor-lines')" class='b-or-font-imp'>Lines</a></li>
 					<li class='c0'><a href="" ng-click="linesData.gotoAnchor('anchor-about')" class='b-or-font-imp'>About</a></li>
-					<li class='c0'><a href="" ng-click="linesData.gotoAnchor('anchor-references')" class='b-or-font-imp'>References</a></li>
+					<!--li class='c0'><a href="" ng-click="linesData.gotoAnchor('anchor-references')" class='b-or-font-imp'>References</a></li-->
 				  </ul>
 			</div>
 		</div>		
 
 		<div class='cent-div'>
 			<div id='anchor-elements' class='anchor'></div>
-			<div id = 'periodic-table' class='center-block pad-below-navig' class='cent-div'>
+			<div id = 'periodic-table' class='center-block pad-below-navig cent-div narrower-table-important'>
 
 				
 				<table class='table table-condensed table-responsive'> 
@@ -231,22 +243,33 @@
 							<!--button type="button" class="btn btn-block" ng-class="{true: 'btn-info', false: 'btn-default'}[linesData.isCa]" ng-click='linesData.selectCa()'>Ca</button-->
 							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isCa]" ng-click='linesData.isCa = !linesData.isCa'>Ca</button>
 						</td>
-						<td><button type="button" class="btn btn-block">Sc</button></td>
-						<td><button type="button" class="btn btn-block">Ti</button></td>
-						<td><button type="button" class="btn btn-block">V</button></td>
-						<td><button type="button" class="btn btn-block">Cr</button></td>
-						<td><button type="button" class="btn btn-block">Mn</button></td>
-						<td><button type="button" class="btn btn-block">Fe</button></td>
-						<td><button type="button" class="btn btn-block">Co</button></td>
-						<td><button type="button" class="btn btn-block">Ni</button></td>
-						<td><button type="button" class="btn btn-block">Cu</button></td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isSc]" ng-click='linesData.isSc = !linesData.isSc'>Sc</button></td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isTi]" ng-click='linesData.isTi = !linesData.isTi'>Ti</button></td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isV]" ng-click='linesData.isV = !linesData.isV'>V</button></td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isCr]" ng-click='linesData.isCr = !linesData.isCr'>Cr</button></td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isMn]" ng-click='linesData.isMn = !linesData.isMn'>Mn</button></td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isFe]" ng-click='linesData.isFe = !linesData.isFe'>Fe</button></td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isCo]" ng-click='linesData.isCo = !linesData.isCo'>Co</button></td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isNi]" ng-click='linesData.isNi = !linesData.isNi'>Ni</button></td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isCu]" ng-click='linesData.isCu = !linesData.isCu'>Cu</button></td>
 						<td><button type="button" class="btn btn-block">Zn</button></td>
-						<td><button type="button" class="btn btn-block">Ga</button></td>
-						<td><button type="button" class="btn btn-block">Ge</button></td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isGa]" ng-click='linesData.isGa = !linesData.isGa'>Ga</button></td>
+						<td>
+							<button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isGe]" ng-click='linesData.isGe = !linesData.isGe'>Ge</button></td>
 						<td><button type="button" class="btn btn-block">As</button></td>
 						<td><button type="button" class="btn btn-block">Se</button></td>
 						<td><button type="button" class="btn btn-block">Br</button></td>
-						<td><button type="button" class="btn btn-block">Kr</button></td>
+						<td><button type="button" class="btn btn-block" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.isKr]" ng-click='linesData.isKr = !linesData.isKr'>Kr</button></td>
 					</tr>
 					<tr>
 						<td><button type="button" class="btn btn-block">Rb</button></td>
@@ -318,26 +341,27 @@
 			<div class='cent-div'>
 
 
-				<div class='info-bit' style='white-space: nowrap:!important'>
+				<!--div class='info-bit' style='white-space: nowrap:!important'-->
+				<div class='info-bit'>
 					
 					<form class="form-inline text-center">
 					
 						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">I & II</label>
-						<!--label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">With Transition Probabilities</label-->
+						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">With Transition Probabilities</label>
 						<!--label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">Observed</label-->
 						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">Observed WL in air</label>
 													
-						<div class="form-group b-or-font-imp" style="margin-left:10px; margin-right:10px;display:inline-block;">
+						<div class="form-group b-or-font-imp inline-input">
 								<label for="swl">Start WL:&nbsp;</label>
 								<input type="text" id='swl'ng-model="linesData.startWl" class="form-control" style='width: 60px; font-weight:normal;'>
 						</div>
 					
-						<div class="form-group b-or-font-imp" style="margin-left:10px; margin-right:10px;display: inline-block !important;">
+						<div class="form-group b-or-font-imp inline-input" >
 								<label for="ewl">End WL:&nbsp;</label>
 								<input type="text" id='ewl'ng-model="linesData.endWl" class="form-control small-text-box" style='width: 60px; font-weight:normal;'>
 						</div>
 					
-						<button class="btn" ng-class="{true: 'btn-warning', false: 'btn-default btn-off disabled'}[linesData.isH || linesData.isHe || linesData.isLi || linesData.isBe || linesData.isB || linesData.isC || linesData.isN || linesData.isO || linesData.isF || linesData.isNe || linesData.isNa || linesData.isMg || linesData.isAl || linesData.isSi || linesData.isP || linesData.isS || linesData.isCl || linesData.isAr || linesData.isK || linesData.isCa]" ng-click='linesData.fetchLines(item, $event)' style="margin-left: 20px; margin-right:20px;width:100px;display:inline-block;">Go!</button>
+						<button class="btn" ng-class="{true: 'btn-warning', false: 'btn-default btn-off disabled'}[linesData.isH || linesData.isHe || linesData.isLi || linesData.isBe || linesData.isB || linesData.isC || linesData.isN || linesData.isO || linesData.isF || linesData.isNe || linesData.isNa || linesData.isMg || linesData.isAl || linesData.isSi || linesData.isP || linesData.isS || linesData.isCl || linesData.isAr || linesData.isK || linesData.isCa || linesData.isSc || linesData.isTi || linesData.isV || linesData.isCr || linesData.isMn || linesData.isMn || linesData.isFe || linesData.isCo || linesData.isNi || linesData.isCu || linesData.isGa || linesData.isGe || linesData.isKr]" ng-click='linesData.fetchLines(item, $event)' style="margin-left: 20px; margin-right:20px;width:100px;display:inline-block;">Go!</button>
 					</form>	
 				</div>
 			</div>
@@ -365,7 +389,9 @@
 			<div class='back'>
 				<div class='cent-div'>
 					<div class='info-bit w-textlet'>
-						Lines are drawn using Gaussian profiles with pixel size set to 0.1 nm.  Hover over spectrum to see inensity values. Click and hold left mouse button to select a rectangle to zoom in. Right mouse button click to zoom out.  
+						Spectral lines are drawn using Gaussian profiles with pixel size set to 0.1 nm where each lines is calculated over 100 pixels.
+						Hover over spectrum to see the legend as well as inensity values at any pixel. 
+						Click and hold left mouse button to select a rectangle to zoom in. Right mouse button click to zoom out.  
 					</div>
 				</div>
 			</div>
@@ -379,9 +405,9 @@
 						<td>Ionisation</td>
 						<td>Wavelength/nm</td>
 						<td>Relative Intensity</td>
-						<td>Aki</td>
-						<td>Ei</td>
-						<td>Ek</td>
+						<td>Aki/s^-1</td>
+						<td>Ei/cm^-1</td>
+						<td>Ek/cm^-1</td>
 						<td>gi</td>
 						<td>gk</td>
 					</tr>
@@ -407,19 +433,23 @@
 			<div class='back'>
 				<div class='cent-div'>
 					<div class='info-bit w-textlet'>
-						This is a beta version of Atomic Spectra.  This project is a work in progress, so keep coming back to find more features implemented. Willing to contribure? Have suggestions? Want to report errors? We are on <a href=''>GitHub</a>.
+						This is a beta version of Atomic Spectra.  This project is a work in progress, so keep coming back to find more features implemented. Willing to contribure? Have suggestions? Want to report errors? We are on <a href=''>GitHub</a>. 
+						<br>
+						<br>
+						References:<br>
+						1. Kramida, A., Ralchenko, Yu., Reader, J., and NIST ASD Team (2015). NIST Atomic Spectra Database (ver. 5.3), [Online]. Available: http://physics.nist.gov/asd [2016, April 1-14]. National Institute of Standards and Technology, Gaithersburg, MD. 
 					</div>
 				</div>
 			</div>
 
-			<div id="anchor-references" class="anchor"></div>
+			<!--div id="anchor-references" class="anchor"></div>
 			<div class='back'>
 				<div class='cent-div'>
 					<div class='info-bit w-textlet'>
 						1. Kramida, A., Ralchenko, Yu., Reader, J., and NIST ASD Team (2015). NIST Atomic Spectra Database (ver. 5.3), [Online]. Available: http://physics.nist.gov/asd [2016, April 1]. National Institute of Standards and Technology, Gaithersburg, MD. 
 					</div>
 				</div>
-			</div>
+			</div-->
 		</div>	
 	</div>
 	

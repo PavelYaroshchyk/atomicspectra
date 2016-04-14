@@ -26,6 +26,18 @@ angular.module('spectralPlotter')
 	$scope.linesData.isAr = false;
 	$scope.linesData.isK = false;
 	$scope.linesData.isCa = false;
+	$scope.linesData.isSc = false;
+	$scope.linesData.isTi = false;
+	$scope.linesData.isV = false;
+	$scope.linesData.isCr = false;
+	$scope.linesData.isMn = false;
+	$scope.linesData.isFe = false;
+	$scope.linesData.isCo = false;
+	$scope.linesData.isNi = false;
+	$scope.linesData.isCu = false;
+	$scope.linesData.isGa = false;
+	$scope.linesData.isGe = false;
+	$scope.linesData.isKr = false;
 	
 	$scope.linesData.isGo = false;
 	$scope.linesData.elements = [];
@@ -57,7 +69,19 @@ angular.module('spectralPlotter')
 		if ($scope.linesData.isCl && $scope.linesData.elements.indexOf('Cl') == -1) $scope.linesData.elements.push('Cl');
 		if ($scope.linesData.isAr && $scope.linesData.elements.indexOf('Ar') == -1) $scope.linesData.elements.push('Ar');
 		if ($scope.linesData.isK && $scope.linesData.elements.indexOf('K') == -1) $scope.linesData.elements.push('K');
-		if ($scope.linesData.isCa && $scope.linesData.elements.indexOf('Ca') == -1) $scope.linesData.elements.push('Ca');		
+		if ($scope.linesData.isCa && $scope.linesData.elements.indexOf('Ca') == -1) $scope.linesData.elements.push('Ca');	
+		if ($scope.linesData.isSc && $scope.linesData.elements.indexOf('Sc') == -1) $scope.linesData.elements.push('Sc');	
+		if ($scope.linesData.isTi && $scope.linesData.elements.indexOf('Ti') == -1) $scope.linesData.elements.push('Ti');	
+		if ($scope.linesData.isV && $scope.linesData.elements.indexOf('V') == -1) $scope.linesData.elements.push('V');	
+		if ($scope.linesData.isCr && $scope.linesData.elements.indexOf('Cr') == -1) $scope.linesData.elements.push('Cr');	
+		if ($scope.linesData.isMn && $scope.linesData.elements.indexOf('Mn') == -1) $scope.linesData.elements.push('Mn');
+		if ($scope.linesData.isFe && $scope.linesData.elements.indexOf('Fe') == -1) $scope.linesData.elements.push('Fe');
+		if ($scope.linesData.isCo && $scope.linesData.elements.indexOf('Co') == -1) $scope.linesData.elements.push('Co');
+		if ($scope.linesData.isNi && $scope.linesData.elements.indexOf('Ni') == -1) $scope.linesData.elements.push('Ni');
+		if ($scope.linesData.isCu && $scope.linesData.elements.indexOf('Cu') == -1) $scope.linesData.elements.push('Cu');
+		if ($scope.linesData.isGa && $scope.linesData.elements.indexOf('Ga') == -1) $scope.linesData.elements.push('Ga');	
+		if ($scope.linesData.isGe && $scope.linesData.elements.indexOf('Ge') == -1) $scope.linesData.elements.push('Ge');
+		if ($scope.linesData.isKr && $scope.linesData.elements.indexOf('Kr') == -1) $scope.linesData.elements.push('Kr');
 	}
 
 
@@ -86,8 +110,8 @@ angular.module('spectralPlotter')
 
 		} else {
 			gatherElements();
-			//var serviceUrl = 'http://localhost:8080/atomicspectroscopy/api/data/lines/';
-			var serviceUrl = 'http://192.168.1.4:8080/atomicspectroscopy/api/data/lines/';
+			var serviceUrl = 'http://localhost:8080/atomicspectroscopy/api/data/lines/';
+			//var serviceUrl = 'http://192.168.1.4:8080/atomicspectroscopy/api/data/lines/';
 			var linesResponses = [];
 
 			for (var i = 0; i < $scope.linesData.elements.length; i++){
