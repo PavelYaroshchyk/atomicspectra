@@ -1,5 +1,15 @@
 angular.module('spectralPlotter')
 .controller('LinesController',['$scope', '$http', '$q', '$anchorScroll', '$location', function($scope, $http, $q, $anchorScroll, $location){
+	
+	var production = false;
+	var serviceUrl;
+
+	if (production){
+		serviceUrl = 'http://192.168.1.4:8080/atomicspectroscopy/api/data/lines/';
+	} else {
+		serviceUrl = 'http://localhost:8080/atomicspectroscopy/api/data/lines/';
+	}
+
 	$scope.linesData = {};
 	$scope.linesData.error = {};
 	$scope.linesData.warning = {};
@@ -41,7 +51,7 @@ angular.module('spectralPlotter')
 	
 	$scope.linesData.isGo = false;
 	$scope.linesData.elements = [];
-	$scope.linesData.fwhm = 0.5;
+	$scope.linesData.fwhm = '0.5';
 	$scope.linesData.numHorGr = 6;
 	$scope.linesData.startWl = '200';
 	$scope.linesData.endWl = '1000';
@@ -110,8 +120,7 @@ angular.module('spectralPlotter')
 
 		} else {
 			gatherElements();
-			var serviceUrl = 'http://localhost:8080/atomicspectroscopy/api/data/lines/';
-			//var serviceUrl = 'http://192.168.1.4:8080/atomicspectroscopy/api/data/lines/';
+			
 			var linesResponses = [];
 
 			for (var i = 0; i < $scope.linesData.elements.length; i++){
@@ -133,7 +142,7 @@ angular.module('spectralPlotter')
 			    chart1.data = {"cols": [
 			        {id: "spec", label: "Spectrum", type: "number"},
 			        {id: "aSpec", label: $scope.linesData.elements.join(', '), type: "number"}], 
-			        "rows": getFormattedSpectrum(data, $scope.linesData.fwhm)
+			        "rows": getFormattedSpectrum(data, $scope.linesData.fwhm, $scope.linesData.startWl, $scope.linesData.endWl)
 				};
 
 			    chart1.options = {
@@ -153,10 +162,18 @@ angular.module('spectralPlotter')
 			  
 			        "displayExactValues": true,
 			        "vAxis": {
-			            "title": "Intensity/a.u."//, "gridlines": {"count": $scope.linesData.numHorGr}
+			            "title": "Intensity/a.u."
+			             /*,titleTextStyle: {
+            				color: '#FF851B',
+            				bold: true
+          				},*/
 			        },
 			        "hAxis": {
 			            "title": "Wavelength/nm"
+			             /*,titleTextStyle: {
+            				color: '#FF851B',
+            				bold: true
+          				},*/
 			        }
 			    };
 

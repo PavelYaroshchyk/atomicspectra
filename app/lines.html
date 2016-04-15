@@ -106,8 +106,8 @@
 			}
 
 			.inline-input {
-				margin-left:10px; 
-				margin-right:10px;
+				margin-left:5px; 
+				margin-right:5px;
 				display: inline-block
 			}
 
@@ -346,10 +346,17 @@
 					
 					<form class="form-inline text-center">
 					
-						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">I & II</label>
-						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">With Transition Probabilities</label>
-						<!--label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">Observed</label-->
-						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">Observed WL in air</label>
+						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">I & II Ionisation Levels</label>
+						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">With Transition Probabilities Only</label>
+						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">Observed WL</label>
+						<label class="checkbox-inline w-textlet"><input type="checkbox" disabled='disabled' checked='checked' value="">WL In Air</label>
+
+						<div style='margin-top:25px;'></div>
+
+						<div class="form-group b-or-font-imp inline-input" >
+								<label for="ewl">FWHM/nm:&nbsp;</label>
+								<input type="text" id='ewl'ng-model="linesData.fwhm" class="form-control small-text-box" style='width: 60px; font-weight:normal;'>
+						</div>
 													
 						<div class="form-group b-or-font-imp inline-input">
 								<label for="swl">Start WL:&nbsp;</label>
@@ -389,7 +396,7 @@
 			<div class='back'>
 				<div class='cent-div'>
 					<div class='info-bit w-textlet'>
-						Spectral lines are drawn using Gaussian profiles with pixel size set to 0.1 nm where each lines is calculated over 100 pixels.
+						Spectral lines are drawn using Gaussian profiles with pixel size set to 0.1 nm where each line is calculated over 100 pixels.<br>
 						Hover over spectrum to see the legend as well as inensity values at any pixel. 
 						Click and hold left mouse button to select a rectangle to zoom in. Right mouse button click to zoom out.  
 					</div>

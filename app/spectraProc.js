@@ -26,11 +26,13 @@ var findCentPix = function(centWl){
 	return wl + dec;
 }
 
-var getEmptySpectrum = function(){
+var getEmptySpectrum = function(swl, ewl){
 	var spectrum = [];
-	var curWl = constants.minWl;
+	var curWl = parseFloat(swl);//constants.minWl;
 	var i = 0;
-	while (curWl < constants.maxWl){
+	//while (curWl < constants.maxWl){
+	var maxWl = parseFloat(ewl);	
+	while(curWl < maxWl){
 		spectrum.push({wl: curWl.toFixed(3), inten: 0});
 		curWl += constants.pixSize;
 		i++;
@@ -38,8 +40,8 @@ var getEmptySpectrum = function(){
 	return spectrum;
 }
 
-var getSpectrum = function(data, fwhm){
-	var spectrum = getEmptySpectrum();
+var getSpectrum = function(data, fwhm, swl, ewl){
+	var spectrum = getEmptySpectrum(swl, ewl);
 	var wlLookupMap = spectrum.map(function(e){return e.wl;});
 	
 	angular.forEach(data, function(value, key){
@@ -50,22 +52,24 @@ var getSpectrum = function(data, fwhm){
 			var lineStart = line[0].wl.toFixed(3);
 			var startPix = wlLookupMap.indexOf(lineStart);
 
-			for (var i = 0; i < line.length; i++){
-				if ((startPix + i) < spectrum.length) {
-					spectrum[startPix + i].inten += line[i].inten;	
-				}	
+			if (startPix > -1){
+				for (var i = 0; i < line.length; i++){
+					if ((startPix + i) < spectrum.length) {
+						spectrum[startPix + i].inten += line[i].inten;	
+					}	
+				}
 			}
 		}	
 	});
 	return spectrum;
 }
 
-var getFormattedSpectrum = function(data, fwhm){
-	return formatSpectrum(getSpectrum(data, fwhm));
+var getFormattedSpectrum = function(data, fwhm, swl, ewl){
+	return formatSpectrum(getSpectrum(data, fwhm, swl, ewl));
 }
 
 
-var formatSpectrum = function(data){
+var formatSpectrum = function(data, fwhm, swl, ewl){
 		var rows = [];
 		angular.forEach(data, function(value, key){
 			var column = {c: [{v: value.wl}, {v: value.inten, f: value.inten.toFixed(3)}]};
