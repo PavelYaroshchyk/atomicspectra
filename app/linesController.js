@@ -98,12 +98,16 @@ angular.module('spectralPlotter')
 	$scope.linesData.fetchLines = function(item, event){
 		$scope.linesData.error.flag=false;
 		$scope.linesData.warning.flag=false;
-		if (isNaN($scope.linesData.startWl) || isNaN($scope.linesData.endWl)){
+
+		if (isNaN($scope.linesData.startWl) || isNaN($scope.linesData.endWl) || isNaN($scope.linesData.fwhm)){
 			$scope.linesData.warning.flag = true;
+
 			if (isNaN($scope.linesData.startWl)){
 				$scope.linesData.warning.info = 'Start wavelength must be a number!';
-			} else {
+			} else if (isNaN($scope.linesData.endWl)){
 				$scope.linesData.warning.info = 'End wavelength must be a number!';
+			} else {
+				$scope.linesData.warning.info = 'FWHM must be a number!';
 			}
 
 		} else if (parseFloat($scope.linesData.startWl) >= parseFloat($scope.linesData.endWl)){
@@ -118,6 +122,9 @@ angular.module('spectralPlotter')
 			$scope.linesData.warning.flag = true;
 			$scope.linesData.warning.info = 'End wavelength must be less than 1000 nm!';
 
+		} else if (parseFloat($scope.linesData.fwhm) <= 0){
+			$scope.linesData.warning.flag = true;
+			$scope.linesData.warning.info = 'FWHM must be a positive number!';
 		} else {
 			gatherElements();
 			
