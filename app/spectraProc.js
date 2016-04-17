@@ -28,9 +28,8 @@ var findCentPix = function(centWl){
 
 var getEmptySpectrum = function(swl, ewl){
 	var spectrum = [];
-	var curWl = parseFloat(swl);//constants.minWl;
+	var curWl = parseFloat(swl);
 	var i = 0;
-	//while (curWl < constants.maxWl){
 	var maxWl = parseFloat(ewl);	
 	while(curWl < maxWl){
 		spectrum.push({wl: curWl.toFixed(3), inten: 0});
@@ -41,6 +40,7 @@ var getEmptySpectrum = function(swl, ewl){
 }
 
 var getSpectrum = function(data, fwhm, swl, ewl){
+	
 	var spectrum = getEmptySpectrum(swl, ewl);
 	var wlLookupMap = spectrum.map(function(e){return e.wl;});
 	
@@ -51,12 +51,19 @@ var getSpectrum = function(data, fwhm, swl, ewl){
 			var line = gauss(value.wl, relIntDig, fwhm);
 			var lineStart = line[0].wl.toFixed(3);
 			var startPix = wlLookupMap.indexOf(lineStart);
-
-			if (startPix > -1){
-				for (var i = 0; i < line.length; i++){
-					if ((startPix + i) < spectrum.length) {
-						spectrum[startPix + i].inten += line[i].inten;	
-					}	
+			
+			var sp = 0;
+			if (startPix == -1){
+				while (startPix == -1){
+					startPix = wlLookupMap.indexOf(line[sp++].wl.toFixed(3));
+				}
+			}
+			
+			var j = 0;
+			for (var i = sp; i < line.length; i++){
+				if ((startPix + j) < spectrum.length) {
+					spectrum[startPix + j].inten += line[i].inten;
+					j++;
 				}
 			}
 		}	

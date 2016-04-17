@@ -2,13 +2,8 @@ angular.module('spectralPlotter')
 .controller('LinesController',['$scope', '$http', '$q', '$anchorScroll', '$location', function($scope, $http, $q, $anchorScroll, $location){
 	
 	var production = false;
-	var serviceUrl;
+	var serviceUrl = production ? 'http://52.63.1.147/atomicspectroscopy/api/data/lines/' : 'http://localhost:8080/atomicspectroscopy/api/data/lines/';
 
-	if (production){
-		serviceUrl = 'http://192.168.1.4:8080/atomicspectroscopy/api/data/lines/';
-	} else {
-		serviceUrl = 'http://localhost:8080/atomicspectroscopy/api/data/lines/';
-	}
 
 	$scope.linesData = {};
 	$scope.linesData.error = {};
@@ -51,7 +46,7 @@ angular.module('spectralPlotter')
 	
 	$scope.linesData.isGo = false;
 	$scope.linesData.elements = [];
-	$scope.linesData.fwhm = '0.5';
+	$scope.linesData.fwhm = '0.2';
 	$scope.linesData.numHorGr = 6;
 	$scope.linesData.startWl = '200';
 	$scope.linesData.endWl = '1000';
