@@ -2,7 +2,7 @@ angular.module('spectralPlotter')
 .controller('LinesController',['$scope', '$http', '$q', '$anchorScroll', '$location', function($scope, $http, $q, $anchorScroll, $location){
 	
 	var production = false;
-	var serviceUrl = production ? 'http://52.63.1.147/atomicspectroscopy/api/data/lines/' : 'http://localhost:8080/atomicspectroscopy/api/data/lines/';
+	var serviceUrl = production ? 'http://atomicspectra.com/atomicspectroscopy/api/data/lines/' : 'http://localhost:8080/atomicspectroscopy/api/data/lines/';
 
 
 	$scope.linesData = {};
