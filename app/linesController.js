@@ -8,8 +8,10 @@ angular.module('spectralPlotter')
 	$scope.linesData = {};
 	$scope.linesData.error = {};
 	$scope.linesData.warning = {};
+	$scope.linesData.info = {};
 	$scope.linesData.error.flag = false;
 	$scope.linesData.warning.flag = false;
+	$scope.linesData.info.flag=false;
 	
 	$scope.linesData.isH = false;
 	$scope.linesData.isHe = false;
@@ -121,8 +123,12 @@ angular.module('spectralPlotter')
 			$scope.linesData.warning.flag = true;
 			$scope.linesData.warning.info = 'FWHM must be a positive number!';
 		} else {
+
 			gatherElements();
 			
+			$scope.linesData.info.flag=true;
+			$scope.linesData.info.text = $scope.linesData.elements.length > 3 ? 'Loading data. Please consider selecting fewer elements to speed up the process.' : 'Loading data.'; 
+
 			var linesResponses = [];
 
 			for (var i = 0; i < $scope.linesData.elements.length; i++){
@@ -181,6 +187,7 @@ angular.module('spectralPlotter')
 
 			    chart1.formatters = {};
 			    $scope.linesData.linesChart = chart1;	
+			    $scope.linesData.info.flag=false;
 			}, function (reason){
 				var str = JSON.stringify(reason, null, 4);
 				console.log('request failed: ' + str);
@@ -188,6 +195,7 @@ angular.module('spectralPlotter')
 				$scope.linesData.error.flag=true;
 				$scope.linesData.error.status=reason.status;
 				$scope.linesData.error.statusText=reason.statusText;
+				$scope.linesData.info.flag=false;
 			});
 
 		}

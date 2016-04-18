@@ -373,6 +373,12 @@
 				</div>
 			</div>
 		</div>
+
+		<div ng-show = 'linesData.info.flag == true'>
+			<div class="alert alert-info" style='text-align: center;'>
+				Please wait... <strong> {{linesData.info.text}}</strong>
+  			</div>
+		</div>	
 		
 		<div ng-show = 'linesData.error.flag == true'>
 			<div class="alert alert-danger" style='text-align: center;'>
