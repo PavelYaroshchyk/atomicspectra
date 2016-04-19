@@ -50,8 +50,8 @@ angular.module('spectralPlotter')
 	$scope.linesData.elements = [];
 	$scope.linesData.fwhm = '0.2';
 	$scope.linesData.numHorGr = 6;
-	$scope.linesData.startWl = '200';
-	$scope.linesData.endWl = '1000';
+	$scope.linesData.startWl = '400';
+	$scope.linesData.endWl = '600';
 
 	var gatherElements = function(){
 
@@ -125,9 +125,9 @@ angular.module('spectralPlotter')
 		} else {
 
 			gatherElements();
-			
+
 			$scope.linesData.info.flag=true;
-			$scope.linesData.info.text = $scope.linesData.elements.length > 3 ? 'Loading data. Please consider selecting fewer elements to speed up the process.' : 'Loading data.'; 
+			$scope.linesData.info.text = $scope.linesData.elements.length > 3 ? 'Loading data. Next time consider selecting fewer elements to speed up the process.' : 'Loading data.'; 
 
 			var linesResponses = [];
 
