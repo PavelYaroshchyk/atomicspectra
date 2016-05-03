@@ -426,7 +426,7 @@
 					</tr>
 				</thead>
 				<tbody>
-  					<tr ng-repeat="line in linesData.result">
+  					<tr ng-repeat="line in linesData.result | orderBy: 'wl'">
   						<td>{{line.elName}}</td>
   						<td>{{line.ion}}</td>
     					<td>{{line.wl}}</td>
