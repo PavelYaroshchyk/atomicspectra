@@ -115,6 +115,10 @@
 				min-width: 900px !important;
 			}
 
+			.no-border{
+  				border:0px solid transparent; 
+ 			}
+
     	</style>
 	</head>
 	<body>
@@ -407,7 +411,7 @@
 						<img src='../img/zoomin.png' height="30" width="30"></img> Click and hold left mouse button to select a rectangle to zoom in. 
 						<img src='../img/zoomout.png' height="30" width="30"></img> Right mouse button click to zoom out.  	
 						<br>
-						Hover over spectrum to see the legend as well as inensity values at any pixel. Click on the buttons in the header of the table below to sort.
+						Hover over spectrum to see the legend as well as inensity values at any pixel. Click on the header of the table below to sort by any of the columns.
 					</div>
 				</div>
 			</div>
@@ -419,32 +423,32 @@
 				<thead>
 					<tr>
 						<td>
-							<button ng-click="linesData.order('elName')" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.predicate==='elName']" class="btn" >Element</button>
+							<button ng-click="linesData.order('elName')" ng-class="{true: 'btn-warning', false: 'btn-default  no-border'}[linesData.predicate==='elName']" class="btn" >Element</button>
          				</td>
          				<td>
-							<button ng-click="linesData.order('ion')" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.predicate==='ion']" class="btn" >Ionisation</button>
+							<button ng-click="linesData.order('ion')" ng-class="{true: 'btn-warning', false: 'btn-default no-border'}[linesData.predicate==='ion']" class="btn" >Ionisation</button>
          				</td>
 						
 						<td>
-							<button ng-click="linesData.order('wl')" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.predicate==='wl']" class="btn" >Wavelength/nm</button>
+							<button ng-click="linesData.order('wl')" ng-class="{true: 'btn-warning', false: 'btn-default no-border'}[linesData.predicate==='wl']" class="btn" >Wavelength/nm</button>
 						</td>
 						<td>
-							<button ng-click="linesData.order('relInt')" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.predicate==='relInt']" class="btn" >Relative Intensity</button>
+							<button ng-click="linesData.order('relInt')" ng-class="{true: 'btn-warning', false: 'btn-default  no-border'}[linesData.predicate==='relInt']" class="btn" >Relative Intensity</button>
 						</td>
 						<td>
-							<button ng-click="linesData.order('aki')" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.predicate==='aki']" class="btn" >Aki/s^-1</button>
+							<button ng-click="linesData.order('aki')" ng-class="{true: 'btn-warning', false: 'btn-default  no-border'}[linesData.predicate==='aki']" class="btn" >Aki/s^-1</button>
 						</td>
 						<td>
-							<button ng-click="linesData.order('ei')" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.predicate==='ei']" class="btn" >Ei/cm^-1</button>
+							<button ng-click="linesData.order('ei')" ng-class="{true: 'btn-warning', false: 'btn-default  no-border'}[linesData.predicate==='ei']" class="btn" >Ei/cm^-1</button>
 						</td>
 						<td>
-							<button ng-click="linesData.order('ek')" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.predicate==='ek']" class="btn" >Ek/cm^-1</button>
+							<button ng-click="linesData.order('ek')" ng-class="{true: 'btn-warning', false: 'btn-default  no-border'}[linesData.predicate==='ek']" class="btn" >Ek/cm^-1</button>
 						</td>
 						<td>
-							<button ng-click="linesData.order('gi')" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.predicate==='gi']" class="btn" >gi</button>
+							<button ng-click="linesData.order('gi')" ng-class="{true: 'btn-warning', false: 'btn-default  no-border'}[linesData.predicate==='gi']" class="btn" >gi</button>
 						</td>
 						<td>
-							<button ng-click="linesData.order('gk')" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.predicate==='gk']" class="btn" >gk</button>
+							<button ng-click="linesData.order('gk')" ng-class="{true: 'btn-warning', false: 'btn-default  no-border'}[linesData.predicate==='gk']" class="btn" >gk</button>
 						</td>
 					</tr>
 				</thead>
