@@ -53,6 +53,15 @@ angular.module('spectralPlotter')
 	$scope.linesData.startWl = '400';
 	$scope.linesData.endWl = '600';
 
+	$scope.linesData.predicate = 'wl';
+	$scope.linesData.reverse = false;
+
+	$scope.linesData.order = function(predicate) {
+    	$scope.linesData.reverse = ($scope.linesData.predicate === predicate) ? !$scope.linesData.reverse : false;
+    	$scope.linesData.predicate = predicate;
+  	};
+
+
 	var gatherElements = function(){
 
 		$scope.linesData.elements.length = 0;

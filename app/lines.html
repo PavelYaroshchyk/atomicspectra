@@ -402,31 +402,54 @@
 			<div class='back'>
 				<div class='cent-div'>
 					<div class='info-bit w-textlet'>
-						Spectral lines are drawn using Gaussian profiles with pixel size set to 0.1 nm where each line is calculated over 100 pixels.<br>
-						Hover over spectrum to see the legend as well as inensity values at any pixel. 
-						Click and hold left mouse button to select a rectangle to zoom in. Right mouse button click to zoom out.  
+						Spectral lines are drawn using Gaussian profiles with pixel size set to 0.1 nm where each line is calculated over 100 pixels.
+						<br>
+						<img src='../img/zoomin.png' height="30" width="30"></img> Click and hold left mouse button to select a rectangle to zoom in. 
+						<img src='../img/zoomout.png' height="30" width="30"></img> Right mouse button click to zoom out.  	
+						<br>
+						Hover over spectrum to see the legend as well as inensity values at any pixel. Click on the buttons in the header of the table below to sort.
 					</div>
 				</div>
 			</div>
 
 			<div class='cent-div'>
 				<div id='anchor-lines' class='anchor'></div>
+
 				<table id='lines-table' class='table table-striped table-responsive'>
 				<thead>
 					<tr>
-						<td>Element</td>
-						<td>Ionisation</td>
-						<td>Wavelength/nm</td>
-						<td>Relative Intensity</td>
-						<td>Aki/s^-1</td>
-						<td>Ei/cm^-1</td>
-						<td>Ek/cm^-1</td>
-						<td>gi</td>
-						<td>gk</td>
+						<td>
+							<button ng-click="linesData.order('elName')" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.predicate==='elName']" class="btn" >Element</button>
+         				</td>
+         				<td>
+							<button ng-click="linesData.order('ion')" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.predicate==='ion']" class="btn" >Ionisation</button>
+         				</td>
+						
+						<td>
+							<button ng-click="linesData.order('wl')" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.predicate==='wl']" class="btn" >Wavelength/nm</button>
+						</td>
+						<td>
+							<button ng-click="linesData.order('relInt')" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.predicate==='relInt']" class="btn" >Relative Intensity</button>
+						</td>
+						<td>
+							<button ng-click="linesData.order('aki')" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.predicate==='aki']" class="btn" >Aki/s^-1</button>
+						</td>
+						<td>
+							<button ng-click="linesData.order('ei')" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.predicate==='ei']" class="btn" >Ei/cm^-1</button>
+						</td>
+						<td>
+							<button ng-click="linesData.order('ek')" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.predicate==='ek']" class="btn" >Ek/cm^-1</button>
+						</td>
+						<td>
+							<button ng-click="linesData.order('gi')" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.predicate==='gi']" class="btn" >gi</button>
+						</td>
+						<td>
+							<button ng-click="linesData.order('gk')" ng-class="{true: 'btn-warning', false: 'btn-default'}[linesData.predicate==='gk']" class="btn" >gk</button>
+						</td>
 					</tr>
 				</thead>
 				<tbody>
-  					<tr ng-repeat="line in linesData.result | orderBy: 'wl'">
+  					<tr ng-repeat="line in linesData.result | orderBy: linesData.predicate : linesData.reverse ">
   						<td>{{line.elName}}</td>
   						<td>{{line.ion}}</td>
     					<td>{{line.wl}}</td>
@@ -450,7 +473,7 @@
 						<br>
 						<br>
 						References:<br>
-						1. Kramida, A., Ralchenko, Yu., Reader, J., and NIST ASD Team (2015). NIST Atomic Spectra Database (ver. 5.3), [Online]. Available: http://physics.nist.gov/asd [2016, April 1-14]. National Institute of Standards and Technology, Gaithersburg, MD. 
+						1. Kramida, A., Ralchenko, Yu., Reader, J., and NIST ASD Team (2015). NIST Atomic Spectra Database (ver. 5.3), [Online]. Available: <a href='http://physics.nist.gov/asd' target='_blank'>http://physics.nist.gov/asd</a> [2016, April 1-14]. National Institute of Standards and Technology, Gaithersburg, MD. 
 					</div>
 				</div>
 			</div>
