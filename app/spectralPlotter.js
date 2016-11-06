@@ -13,7 +13,7 @@ spectralPlotter.config(['$routeProvider', function($routeProvider){
 		templateUrl: 'app/register.html',
 		controller: 'RegistrationController'
 	})
-	.when('login',{
+	.when('/login',{
 		templateUrl: 'app/login.html',
 		controller: 'LoginController'
 	})
