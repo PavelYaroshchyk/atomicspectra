@@ -17,6 +17,9 @@ spectralPlotter.config(['$routeProvider', function($routeProvider){
 		templateUrl: 'app/login.html',
 		controller: 'LoginController'
 	})
+	.when('/logout',{
+		redirectTo: '/welcome'
+	})
 	.otherwise({
 		redirectTo: '/welcome' 
 	});
